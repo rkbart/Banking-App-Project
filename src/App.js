@@ -1,11 +1,23 @@
 import './App.css';
-import Login from './components/Login/Login.jsx'
+// import Login from './components/Login/Login.jsx'
+// import Modal from './components/Modal/Modal.jsx'
+import Users from './components/Users/Users.jsx'
+// import { useState, useEffect } from 'react';
 
 function App() {
-   return (
+  // const [isModalOpen, setModalOpen] = useState(false);  
+  // const closeModal = () => setModalOpen(false);
+
+  // useEffect(() => {
+  //   setModalOpen(true);
+  // }, []);
+
+  return (
     <div className="App">
-      
-     <Login /> {/* Render the Login component directly */}
+      <Users />
+      {/* <Modal isOpen={isModalOpen} onClose={closeModal}>
+        <Login onLoginSuccess={closeModal}/> 
+      </Modal> */}
     </div>
   );
 }

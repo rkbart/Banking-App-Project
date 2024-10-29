@@ -2,7 +2,7 @@ import './Login.css';
 import sweetPotato from "../../assets/sweet-potato.png"
 import { useState } from 'react';
 
-function Login() {
+function Login({ onLoginSuccess }) { // parameter value declared inside App.js
 
        const [username, setUsername] = useState('');
        const [password, setPassword] = useState('');
@@ -11,8 +11,10 @@ function Login() {
               console.log('Username:', username);
               console.log('Password:', password);
               
+              event.preventDefault(); // prevent refreshing the page upon submission
               if (username === 'admin' && password === 'admin') {
                      alert("Login successfully!");
+                     onLoginSuccess();
               } else {
                      alert("Login failed!");
               }
@@ -27,7 +29,7 @@ function Login() {
        }
 
   return (
-    <div className="contianer">
+    <div className="container">
         <form id="login-container" onSubmit={handleSubmit}>
            <span>
               <img src={sweetPotato}
@@ -44,6 +46,7 @@ function Login() {
                        maxLength="20"
                        autoComplete="off"
                        spellCheck = "false"
+                       value={username}
                        onChange={handleUsername}/><br/>
                 <input type="password" 
                        id="password" 
@@ -52,9 +55,11 @@ function Login() {
                        maxLength="20"
                        autoComplete="off"
                        spellCheck = "false"
+                       value={password}
                        onChange={handlePassword}/><br/>
                 <input type="submit" 
                        id="submit" 
+                       value="Login"
                        onSubmit={handleSubmit}/>
             </div>
             </form>
