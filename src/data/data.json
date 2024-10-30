@@ -1,0 +1,20 @@
+[
+    {
+        "firstName": "Ryan",
+        "lastName": "Bartolome",
+        "email": "rk_bart@yahoo.com",
+        "balance": 100000
+    },
+    {
+        "firstName": "Vahnessa",
+        "lastName": "Gonzales",
+        "email": "nessa.gonzales07@yahoo.com",
+        "balance": 150000
+    },
+    {
+        "firstName": "Pepper",
+        "lastName": "Bartolome",
+        "email": "pepperthed@gmail.com",
+        "balance": 200000
+    }
+]

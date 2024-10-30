@@ -1,0 +1,52 @@
+body {
+    height: 100vh; 
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    background-color: #707070; 
+ }
+
+#container {
+    text-align: center;
+    padding: 20px; 
+    border-radius: 15px; 
+    width: 45%;
+    height: auto;
+    background-color: whitesmoke;
+    color: #707070;
+    position: relative;
+}
+
+#userlist {
+    color:#707070;
+    font-size: 20px;
+    margin-top: 1rem;
+}
+
+.user-entry {
+    display: flex; 
+    /* justify-content: flex-start; */
+    align-items: center; 
+    margin: 5px 0; 
+}
+
+.avatar {
+    width: 32px;
+    height: 32px; 
+    margin-right: 10px; 
+}
+
+.user-name {
+    list-style-type: none; 
+    cursor: pointer;
+}
+
+#close-button {
+    position: absolute; 
+    top: 10px; 
+    right: 15px; 
+    border: none; 
+    background: transparent; 
+    cursor: pointer; 
+    width: 1rem;
+}
