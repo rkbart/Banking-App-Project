@@ -1,19 +1,19 @@
 [
     {
-        "firstName": "Ryan",
-        "lastName": "Bartolome",
+        "First Name": "Ryan",
+        "Last Name": "Bartolome",
         "email": "rk_bart@yahoo.com",
         "balance": 100000
     },
     {
-        "firstName": "Vahnessa",
-        "lastName": "Gonzales",
+        "First Name": "Vahnessa",
+        "Last Name": "Gonzales",
         "email": "nessa.gonzales07@yahoo.com",
         "balance": 150000
     },
     {
-        "firstName": "Pepper",
-        "lastName": "Bartolome",
+        "First Name": "Pepper",
+        "Last Name": "Bartolome",
         "email": "pepperthed@gmail.com",
         "balance": 200000
     }
