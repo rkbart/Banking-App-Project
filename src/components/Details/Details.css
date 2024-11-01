@@ -1,11 +1,11 @@
 body {
-    height: 100vh; 
-    display: flex;
+    /* height: 100vh;  */
+    display: block;
     flex-direction: column;
     justify-content: center; 
     align-items: center; 
     background-color: #707070; 
-    padding: 2rem;
+    padding: 0.5rem;
 }
 
 h2 {
@@ -18,11 +18,12 @@ h2 {
     padding: 1rem;
     border-radius: 15px;
     color: whitesmoke;
-    width: 100%;
+    width: 45vw;
     height: 210px;
 }
 
 #user-info > p {
+    text-align: left;
     margin-bottom: 0.25rem;
     margin-top: 1rem;
 }
@@ -71,7 +72,7 @@ h2 {
 
 #deposit-container, #withdraw-container  {
     position: relative;
-    display:none;
+    display:flex;
     margin-left: auto;
     margin-right: auto;
     width: 60%;

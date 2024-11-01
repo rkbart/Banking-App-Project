@@ -1,7 +1,8 @@
 import './Users.css';
 import { useState } from 'react';
+import closeBtn from "../../assets/close.svg"
 
-function Users({ users, setUsers }) {
+function Users({ users, setUsers, onClose }) {
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
@@ -62,11 +63,15 @@ function Users({ users, setUsers }) {
         setPassword('');
         setBalance('');
 
+        alert(`${newUser['First Name']} ${newUser['Last Name']}'s account has been created.`)
+
+        onClose();
+
     }
     return (
         <div id="container">
             <form id="form-container" onSubmit={handleSubmit}>
-                <button id="close-button">&times;</button>
+                <img src={closeBtn} id="close-button" alt="Close" onClick={onClose} />
                 <h2>Add Account</h2>
                 <input
                     className="input-box"

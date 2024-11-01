@@ -4,26 +4,36 @@ import visibility from "../../assets/visibility.svg";
 import visibilityOff from "../../assets/visibility-off.svg";
 import depositImg from "../../assets/deposit.svg";
 import closeImg from "../../assets/close.svg";
+// import InputModal from '../InputModal/InputModal';
 
 function Details({user}) {
-    // const [deposit,setDeposit] = useState(0);
-    // const [withdraw,setWithdraw] = useState(0);
-    // const [transfer,setTransfer] = useState(0);
     
+    const [showInput, setShowInput] = useState(false);
+    const [depositAmount, setDepositAmount] = useState('');
+
+    const handleDepositClick = () => {
+        setShowInput(true);
+    };
+
+    const handleClose = () => {
+        setShowInput(false);
+        setDepositAmount(''); // Reset the input field
+    };
+
+    const handleDepositChange = (event) => {
+        setDepositAmount(event.target.value);
+    };
+
+    const handleDeposit = (event) => {
+        event.preventDefault();
+        // Handle deposit logic here, e.g., update user balance
+        console.log(`Deposited: ${depositAmount}`);
+        handleClose(); // Close the input after submission
+    };
       
     if (!user) {
         return <div>Select a user to see details.</div>;
     }
-
-//     return (
-//         <div id="details-container">
-//             <h2>User Details</h2>
-//             <p><strong>Name:</strong> {`${user["First Name"]} ${user["Last Name"]}`}</p>
-//             <p><strong>Email:</strong> {user.email}</p>
-//             <p><strong>Balance:</strong> ${user.balance}</p>
-//         </div>
-//     );
-// }
 
     const formatBalance = (amount) => {
         return amount.toLocaleString('en-US', {
@@ -43,7 +53,7 @@ function Details({user}) {
             <br/>
 
             <div id="depo-with">
-                <span id="deposit">
+                <span id="deposit" onClick={handleDepositClick}>
                     <img src={depositImg} alt="deposit"/> Deposit
                 </span>
                 <span id="withdraw">
@@ -54,9 +64,30 @@ function Details({user}) {
                 </span>
             </div>
 
-            <div id="deposit-container"></div>
-            <div id="withdraw-container"></div>
-            <div id="transfer-container"></div>
+            {/* input for deposit */}
+            {showInput && (
+                <div id="deposit-container">
+                    <label>Deposit Amount</label>
+                    <input
+                        id ='deposit-input'
+                        type='number'
+                        maxLength={7}
+                        placeholder='input deposit amount'
+                        min={1}
+                        value={depositAmount}
+                        onChange={handleDepositChange}
+                     />
+                    <img    id='depo-img'
+                            src={depositImg}
+                            onClick={handleDeposit}
+                    />
+                    <img    id='close-button'
+                            src={closeImg}
+                            onClick={handleClose}
+                    />
+                </div>
+            )}
+           
         </div>
 
     )

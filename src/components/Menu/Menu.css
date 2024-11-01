@@ -1,0 +1,77 @@
+#menu {
+    /* position: relative;
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 0.5rem;
+    background-color: whitesmoke;
+    border-radius: 15px;
+    color: #707070;
+    width: 100%;
+    height: 130px; */
+
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 0.5rem;
+    background-color: whitesmoke;
+    border-radius: 15px;
+    color: #707070;
+    width: 45vw; /* Set to a specific width or percentage */
+    max-width: 1200px; /* Optional: set a max-width */
+    height: 130px;
+    /* margin-left: auto; 
+    margin-right: auto; */
+}
+
+#send-money, #manage-accounts, #add-user, #budget, #buy-load, #pay-bills {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    width: 50px;
+}
+
+p{ 
+    text-align: center;
+}
+
+#send-money > img {
+    width: 38px;
+    height: auto;
+}
+
+#manage-accounts > img {
+    width: 38px;
+    height: auto;
+}
+#add-user > img {
+    width: 38px;
+    height: auto;
+}
+
+#budget > img {
+    width: 38px;
+    height: auto;
+}
+
+#buy-load > img {
+    width: 38px;
+    height: auto;
+}
+
+#pay-bills > img {
+    width: 38px;
+    height: auto;
+}
+
+#close-button {
+    position: absolute; 
+    top: 10px; 
+    right: 15px; 
+    border: none; 
+    background: transparent; 
+    cursor: pointer; 
+    width: 1rem;
+}
+

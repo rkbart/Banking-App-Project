@@ -5,11 +5,11 @@ import userImg from "../../assets/user.svg"
 
 
 // recieves users(Array) at data(json) as props.. declared in App.js                
-function Accounts({ users, data, onSelectUser }) { // 
+function Accounts({ users, data, onSelectUser, onClose }) { // 
     // const [selectedUser, setSelectedUser] = useState(null);
 
     function handleCloseClick() {
-        alert("Close button clicked!");    
+       onClose();    
     }
 
     // Function to handle user selection
@@ -42,9 +42,7 @@ function Accounts({ users, data, onSelectUser }) { //
             <h2>Select Account</h2>
             <ul id="userlist">
                 <img src={closeBtn} id="close-button" alt="Close" onClick={handleCloseClick} />
-                {/* {renderDataUsers()}
-                {renderUserEntries()} */}
-
+               
                 {/* Display users from the JSON file */}
                 {data.map(({ "First Name": firstName, "Last Name": lastName, email, balance }, index) => (
                     <div key={index} className="user-entry" onClick={() => handleUserClick({ "First Name": firstName, "Last Name": lastName, email, balance })}>
