@@ -9,26 +9,7 @@ function Users({ users, setUsers, onClose }) {
     const [password, setPassword] = useState('');
     const [balance, setBalance] = useState('');
     
-    // const [users, setUsers] = useState([]); // array of objects
-
     const emailRegEx = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/; // filter for email format
-
-    // function for handling firstName
-    // const handleFirstName = (event) => {  // event handler (value of input box nilalagay sa variable)
-    //     setFirstName(event.target.value); // taga lagay ng value
-    // }
-    // const handleLastName = (event) => {
-    //     setLastName(event.target.value);
-    // }
-    // const handleEmail = (event) => {
-    //     setEmail(event.target.value);
-    // }
-    // const handlePassword = (event) => {
-    //     setPassword(event.target.value);
-    // }
-    // const handleBalance = (event) => {
-    //     setBalance(event.target.value);
-    // }
 
     // function for submit button
     const handleSubmit = (event) => {
@@ -69,10 +50,10 @@ function Users({ users, setUsers, onClose }) {
 
     }
     return (
-        <div id="container">
+        <div id="contain">
             <form id="form-container" onSubmit={handleSubmit}>
-                <img src={closeBtn} id="close-button" alt="Close" onClick={onClose} />
-                <h2>Add Account</h2>
+                {/* <img src={closeBtn} id="close-button" alt="Close" onClick={onClose} /> */}
+                <h2>Add Kamote</h2>
                 <input
                     className="input-box"
                     type="text"
@@ -114,7 +95,11 @@ function Users({ users, setUsers, onClose }) {
                     onChange={(e) => setBalance(e.target.value)}
                     required
                 /><br/>
-                <input type="submit" id="submit" />
+                <div id="buttons">
+                    <input type="submit" id="submit" />
+                    <button type="button" id="cancel" onClick={onClose}>Cancel</button>
+                </div>
+                
             </form>
         </div>
     );

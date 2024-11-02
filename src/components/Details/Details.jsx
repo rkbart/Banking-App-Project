@@ -4,14 +4,25 @@ import visibility from "../../assets/visibility.svg";
 import visibilityOff from "../../assets/visibility-off.svg";
 import depositImg from "../../assets/deposit.svg";
 import closeImg from "../../assets/close.svg";
-// import InputModal from '../InputModal/InputModal';
 
-function Details({user}) {
+
+function Details({user, onDeposit}) {
     
     const [showInput, setShowInput] = useState(false);
     const [depositAmount, setDepositAmount] = useState('');
+    const [actionType, setActionType] = useState(''); // 'deposit' or 'withdraw'
+    const [eye, setEye] = useState(false);
 
-    const handleDepositClick = () => {
+    const handleEye = () => {
+        setEye(true);
+        const eyeImg = visibility;
+    }
+    
+    const handleDepositClick = (type) => {
+        if (!user || user.balance <= 0) { // Check if user is selected
+            alert("Please select a user before making a deposit.");
+            return;
+        }
         setShowInput(true);
     };
 
@@ -24,17 +35,20 @@ function Details({user}) {
         setDepositAmount(event.target.value);
     };
 
+    
     const handleDeposit = (event) => {
         event.preventDefault();
-        // Handle deposit logic here, e.g., update user balance
-        console.log(`Deposited: ${depositAmount}`);
-        handleClose(); // Close the input after submission
+
+       const amount = parseFloat(depositAmount);
+        
+        if (!isNaN(amount) && amount > 0) {
+            onDeposit(amount); // Call the deposit function from props
+            handleClose(); // Close the input after submission
+        } else {
+            alert("Please enter a valid deposit amount.");
+        }
     };
       
-    if (!user) {
-        return <div>Select a user to see details.</div>;
-    }
-
     const formatBalance = (amount) => {
         return amount.toLocaleString('en-US', {
         style: 'decimal',
@@ -49,7 +63,7 @@ function Details({user}) {
             <span id="email-holder">{user.email}</span>
             <p>Available Balance</p>
             <span id="balance-holder">{`PHP ${formatBalance(user.balance)}`}</span>
-            <span id="hide"><img src={visibilityOff} alt="hidden"/></span>
+            <span id="hide" onClick={handleEye}><img src={visibilityOff} alt="hidden"/></span>
             <br/>
 
             <div id="depo-with">
@@ -67,12 +81,12 @@ function Details({user}) {
             {/* input for deposit */}
             {showInput && (
                 <div id="deposit-container">
-                    <label>Deposit Amount</label>
+                    <label>Enter Deposit Amount</label>
                     <input
                         id ='deposit-input'
                         type='number'
                         maxLength={7}
-                        placeholder='input deposit amount'
+                        placeholder='PHP deposit amount'
                         min={1}
                         value={depositAmount}
                         onChange={handleDepositChange}

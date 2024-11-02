@@ -1,26 +1,16 @@
 #menu {
-    /* position: relative;
-    display: flex;
-    justify-content: space-evenly;
-    margin-top: 0.5rem;
-    background-color: whitesmoke;
-    border-radius: 15px;
-    color: #707070;
-    width: 100%;
-    height: 130px; */
-
-    position: relative;
     display: flex;
     justify-content: space-around;
-    margin-top: 0.5rem;
+    margin-top: 5px;
+    margin-bottom: 5px;
     background-color: whitesmoke;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
     border-radius: 15px;
     color: #707070;
-    width: 45vw; /* Set to a specific width or percentage */
-    max-width: 1200px; /* Optional: set a max-width */
-    height: 130px;
-    /* margin-left: auto; 
-    margin-right: auto; */
+    width: 45vw; 
+    max-width: 1200px; 
+    height: auto; /* Allow height to adjust to content */
 }
 
 #send-money, #manage-accounts, #add-user, #budget, #buy-load, #pay-bills {

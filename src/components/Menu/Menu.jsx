@@ -6,7 +6,7 @@ import buyLoadImg from '../../assets/buy-load.svg'
 import payBillsImg from '../../assets/pay-bills.svg'
 
 
-function Menu({ onAddUser, onManageAccounts }) {
+function Menu({ onAddUser, onManageAccounts, onPayBills }) {
         
     const handleAddUserClick = () => {
         onAddUser(); // Call the function to show Users component
@@ -14,6 +14,10 @@ function Menu({ onAddUser, onManageAccounts }) {
 
     const handleManageAccountsClick = () => {
         onManageAccounts(); // Call the function to show Accounts component
+    };
+
+    const handlePayBillsClick = () => {
+        onPayBills(); // Call the function to show Accounts component
     };
 
     return (
@@ -34,7 +38,7 @@ function Menu({ onAddUser, onManageAccounts }) {
                 <img src={buyLoadImg} alt="buy load"/>
                 <p>Buy Load</p> 
             </div>
-            <div id="pay-bills">
+            <div id="pay-bills" onClick={handlePayBillsClick}>
                 <img src={payBillsImg} alt="pay-bills"/>
                 <p>Pay Bills</p> 
             </div>
