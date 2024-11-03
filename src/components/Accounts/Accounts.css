@@ -1,12 +1,12 @@
 #accounts-container {
     text-align: center;
-    border-radius: 15px; 
-    width: 45vw; /* Use full width */
+    height: auto; 
+    width: 45vw; 
     background-color: whitesmoke;
-    color: #707070;
+    border-radius: 15px;
+    padding: 1rem; /* Adjust as necessary */
+    z-index: 1; /* Ensure it stacks above the background */
     margin: 0.5rem;
-    height: 210px;
-    padding: 1rem;
 }
 
 #userlist {
@@ -20,7 +20,6 @@
     justify-content: flex-start;
     align-items: flex-start;
     flex-direction: column;
-
 }
 
 .user-entry {

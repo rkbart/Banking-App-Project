@@ -10,6 +10,24 @@ function Users({ users, setUsers, onClose }) {
     const [balance, setBalance] = useState('');
     
     const emailRegEx = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/; // filter for email format
+    const nameRegEx = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+     // Handlers to prevent invalid input in name fields
+     const handleFirstNameChange = (e) => {
+        if (nameRegEx.test(e.target.value)) {
+            setFirstName(e.target.value);
+        } else {
+            alert("Please enter letters only for First Name.");
+        }
+    };
+
+    const handleLastNameChange = (e) => {
+        if (nameRegEx.test(e.target.value)) {
+            setLastName(e.target.value);
+        } else {
+            alert("Please enter letters only for Last Name.");
+        }
+    };
 
     // function for submit button
     const handleSubmit = (event) => {
@@ -67,7 +85,7 @@ function Users({ users, setUsers, onClose }) {
                     type="text"
                     placeholder="Last Name"
                     value={lastName}
-                    onChange={(e) => setLastName(e.target.value)}
+                    onChange={{handleLastNameChange}}
                     required
                 /><br/>
                 <input
@@ -97,7 +115,7 @@ function Users({ users, setUsers, onClose }) {
                 /><br/>
                 <div id="buttons">
                     <input type="submit" id="submit" />
-                    <button type="button" id="cancel" onClick={onClose}>Cancel</button>
+                    <span id="cancel" onClick={onClose}>Cancel</span>
                 </div>
                 
             </form>

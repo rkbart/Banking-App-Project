@@ -48,7 +48,7 @@ h2 {
 }
 
 /* buttons */
-#deposit, #withdraw, #transfer {
+#deposit, #withdraw, #transfer, #logout {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -63,7 +63,7 @@ h2 {
     
 }
 
-#deposit-container, #withdraw-container  {
+#input-container  {
     position: relative;
     display:flex;
     flex-direction: column;
@@ -81,7 +81,7 @@ h2 {
     box-shadow: 1px 1px 5px #707070;
     z-index: 1000;
 }
-label {
+#input-label {
     font-size: 2rem;
 }
 
@@ -104,7 +104,7 @@ label {
     z-index: 1000;
 }
 
-#deposit-input, #withdraw-input {
+#amount-input {
     width: 100%; 
     padding: 10px; 
     border: 1px solid #424242;

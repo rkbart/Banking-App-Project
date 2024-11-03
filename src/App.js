@@ -1,7 +1,5 @@
 import './App.css';
 import { useState } from 'react';
-// import Login from './components/Login/Login.jsx'
-// import Modal from './components/Modal/Modal.jsx'
 import Users from './components/Users/Users.jsx'
 import Accounts from './components/Accounts/Accounts.jsx'
 import Details from './components/Details/Details.jsx'
@@ -9,15 +7,20 @@ import Menu from '../src/components/Menu/Menu.jsx'
 import PayBills from './components/PayBills/PayBills.jsx'
 import History from './components/History/History.jsx'
 import BuyLoad from './components/BuyLoad/BuyLoad.jsx'
+import Login from './components/Login/Login.jsx';
 
 function App() {
-  // const [isModalOpen, setModalOpen] = useState(false);  
-  // const closeModal = () => setModalOpen(false);
+  const [loggedIn, setLoggedIn] = useState(false); // Track login status
+  
+  const handleLogin = () => {
+    setLoggedIn(true); // Set logged in to true on login
+  };
 
-  // useEffect(() => {
-  //   setModalOpen(true);
-  // }, []);
- 
+  // New logout handler to reset the logged-in state
+  const handleLogout = () => {
+    setLoggedIn(false);
+  };
+
   const [users, setUsers] = useState([
     {
         "First Name": "Ryan",
@@ -50,10 +53,11 @@ function App() {
   const [showUsers, setShowUsers] = useState(false); // Track if Users is shown
   const [showAccounts, setShowAccounts] = useState(false); // Track if Accounts is shown
   const [showPayBills, setPayBills] = useState(false); // Track if PayBills is shown
-
+  const [isUserSelected, setIsUserSelected] = useState(false);
   
   const handleSelectUser = (user) => {
       setSelectedUser(user);
+      setIsUserSelected(true); // Mark that a valid user has been selected
   };
 
   const handleDeposit = (amount) => {
@@ -70,10 +74,31 @@ function App() {
     });
   };
 
-  // const handleMenuHide = () => {
-  //   setShowUsers(false);
-  //   setShowAccounts(false);
-  // };
+  const handleWithdrawal = (amount) => {
+    setUsers((prevUsers) => {
+      return prevUsers.map((user) => {
+        if (user.email === selectedUser.email) {
+          // Update the selected user with the new balance
+          const updatedUser = { ...user, balance: user.balance - amount };
+          setSelectedUser(updatedUser); // Update the selected user state
+          return updatedUser; // Return the updated user
+        }
+        return user; // Return the other users unmodified
+      });
+    });
+  };
+
+  const onDepositToUser = (email, amount) => {
+    setUsers((prevUsers) => {
+      return prevUsers.map((user) => {
+        if (user.email === email) {
+          const updatedUser = { ...user, balance: user.balance + amount };
+          return updatedUser; // Return the updated user
+        }
+        return user; // Return the other users unmodified
+      });
+    });
+  };
 
   const handleMenuShow = () => {
     setShowUsers(false);
@@ -99,34 +124,53 @@ function App() {
     setShowUsers(false); // Ensure Users is hidden
   };
 
-  return (
-    <div className="App">
-      <div id='upper-wrapper'>
-        {selectedUser && <Details user={selectedUser} onDeposit={handleDeposit} />}
-        
-        {showMenu && (
-          <Menu 
-            onAddUser={handleAddUser} 
-            onManageAccounts={handleManageAccounts} 
-            onPayBills={handlePayBills} 
-          />
-        )}
-        <History />
-      </div>
-      
-      <div id='lower-wrapper'>
-        {showUsers && (
-          <Users users={users} setUsers={setUsers}  onClose={handleMenuShow}/> // onClose={() => setShowMenu(true)}
-        )}
-        {showAccounts && (
-          <Accounts users={users} onSelectUser={handleSelectUser} onClose={handleMenuShow}/>
-        )} 
-        {showPayBills && (
-          <PayBills onClose={handleMenuShow} /> 
-        )}
-      </div>
-    </div>
-  );
-}
 
+return (
+  <div className="App">
+    {/* Conditionally render the Login component or the main content */}
+    {!loggedIn ? (
+      <div className="login-overlay">
+        <Login onLogin={handleLogin} />
+      </div>
+    ) : (
+      <>
+        <div id="upper-wrapper">
+          {selectedUser && (
+            <Details
+              user={selectedUser}
+              onDeposit={handleDeposit}
+              onWithdrawal={handleWithdrawal}
+              onDepositToUser={onDepositToUser}
+              users={users}
+              isUserSelected={isUserSelected}
+              onLogout={handleLogout}
+            />
+          )}
+        
+          {showMenu && (
+            <Menu
+              onAddUser={handleAddUser}
+              onManageAccounts={handleManageAccounts}
+              onPayBills={handlePayBills}
+            />
+          )}
+          <History />
+        </div>
+      
+        <div id="lower-wrapper">
+          {showUsers && (
+            <Users users={users} setUsers={setUsers} onClose={handleMenuShow} />
+          )}
+          {showAccounts && (
+            <Accounts users={users} onSelectUser={handleSelectUser} onClose={handleMenuShow} />
+          )}
+          {showPayBills && (
+            <PayBills onClose={handleMenuShow} />
+          )}
+        </div>
+      </>
+    )}
+  </div>
+);
+}
 export default App;
