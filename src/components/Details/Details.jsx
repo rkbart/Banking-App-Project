@@ -10,9 +10,9 @@ function Details({user, users, onDeposit, onWithdrawal, onDepositToUser, isUserS
     
     const [showInput, setShowInput] = useState(false);
     const [inputAmount, setInputAmount] = useState('');
-    const [actionType, setActionType] = useState(''); // 'deposit' or 'withdraw'
-    const [isBalanceVisible, setIsBalanceVisible] = useState(true); // Track visibility of balance
-    const [selectedTransferUser, setSelectedTransferUser] = useState(null); // User selected for transfer
+    const [actionType, setActionType] = useState(''); // deposit or withdraw
+    const [isBalanceVisible, setIsBalanceVisible] = useState(true); // the eye
+    const [selectedTransferUser, setSelectedTransferUser] = useState(null); // select for transfer
 
     const handleEye = () => {
         setIsBalanceVisible((prev) => !prev);
@@ -30,7 +30,6 @@ function Details({user, users, onDeposit, onWithdrawal, onDepositToUser, isUserS
         setActionType(type);
         setShowInput(true);
     
-        // Reset transfer user for transfer action
         if (type === 'transfer') {
             setSelectedTransferUser(users[0]); // Default to the first user
         }
@@ -64,7 +63,7 @@ const handleSubmit = (event) => {
     event.preventDefault();
     const amount = parseFloat(inputAmount);
     
-    if (!user) { // Added this check to ensure a user is selected
+    if (!user) { // check to ensure a user is selected
         alert("Please select a user before performing any action.");
         return;
     }
@@ -80,10 +79,10 @@ const handleSubmit = (event) => {
             onWithdrawal(amount); // Call the withdrawal function from props
         } else if (actionType === 'transfer') {
             if (!selectedTransferUser) {
-                alert("Please select a user to transfer to."); // Alert for missing transfer user
+                alert("Please select a user to transfer to."); 
                 return;
             }
-            // Prevent transferring to the same user
+            
             if (selectedTransferUser.email === user.email) {
                 alert("You cannot transfer money to yourself.");
                 return;
@@ -92,10 +91,10 @@ const handleSubmit = (event) => {
                 alert("Transfer amount exceeds the available balance.");
                 return;
             }
-            onWithdrawal(amount); // Withdraw the amount from the current user
+            onWithdrawal(amount); 
             onDepositToUser(selectedTransferUser.email, amount); 
         }
-        handleClose(); // Close the input after submission
+        handleClose(); 
     } else {
         alert("Please enter a valid amount.");
     }
@@ -121,7 +120,7 @@ const handleSubmit = (event) => {
                 <span id="transfer" onClick={() => handleActionClick('transfer')}>
                     <img src={depositImg} alt="transfer"/> Transfer
                 </span>
-                <span id="logout" onClick={onLogout}> {/* Call onLogout when clicking Log out */}
+                <span id="logout" onClick={onLogout}> 
                     <img src={depositImg} alt="logout" /> Log out
                 </span>
             </div>

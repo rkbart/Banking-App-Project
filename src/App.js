@@ -13,12 +13,12 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(false); // Track login status
   
   const handleLogin = () => {
-    setLoggedIn(true); // Set logged in to true on login
+    setLoggedIn(true); // login
   };
 
-  // New logout handler to reset the logged-in state
   const handleLogout = () => {
-    setLoggedIn(false);
+    setLoggedIn(false); // log out
+    alert("Logged out successfull!")
   };
 
   const [users, setUsers] = useState([
@@ -49,15 +49,15 @@ function App() {
     balance: 0
   });
   
-  const [showMenu, setShowMenu] = useState(true); // Track if Menu is shown
-  const [showUsers, setShowUsers] = useState(false); // Track if Users is shown
-  const [showAccounts, setShowAccounts] = useState(false); // Track if Accounts is shown
-  const [showPayBills, setPayBills] = useState(false); // Track if PayBills is shown
-  const [isUserSelected, setIsUserSelected] = useState(false);
+  const [showMenu, setShowMenu] = useState(true); // show menu
+  const [showUsers, setShowUsers] = useState(false); // Users
+  const [showAccounts, setShowAccounts] = useState(false); // Accounts
+  const [showPayBills, setPayBills] = useState(false); // PayBills
+  const [isUserSelected, setIsUserSelected] = useState(false); // Details selected user
   
   const handleSelectUser = (user) => {
       setSelectedUser(user);
-      setIsUserSelected(true); // Mark that a valid user has been selected
+      setIsUserSelected(true); // user has been selected
   };
 
   const handleDeposit = (amount) => {
@@ -66,10 +66,10 @@ function App() {
         if (user.email === selectedUser.email) {
           // Update the selected user with the new balance
           const updatedUser = { ...user, balance: user.balance + amount };
-          setSelectedUser(updatedUser); // Update the selected user state
-          return updatedUser; // Return the updated user
+          setSelectedUser(updatedUser); 
+          return updatedUser; // return the updated user
         }
-        return user; // Return the other users unmodified
+        return user; // return the other users unmodified
       });
     });
   };
@@ -108,26 +108,25 @@ function App() {
 
   const handleAddUser = () => {
     setShowUsers(true); // Show Users component
-    setShowAccounts(false); // Ensure Accounts is hidden
+    setShowAccounts(false); 
     setPayBills(false);
   };
 
   const handleManageAccounts = () => {
     setShowAccounts(true); // Show Accounts component
-    setShowUsers(false); // Ensure Users is hidden
+    setShowUsers(false); 
     setPayBills(false);
   };
   
   const handlePayBills = () => {
     setPayBills(true); // Show PayBills component
-    setShowAccounts(false); // Hide Accounts component
-    setShowUsers(false); // Ensure Users is hidden
+    setShowAccounts(false); 
+    setShowUsers(false); 
   };
 
 
 return (
   <div className="App">
-    {/* Conditionally render the Login component or the main content */}
     {!loggedIn ? (
       <div className="login-overlay">
         <Login onLogin={handleLogin} />
@@ -165,7 +164,7 @@ return (
             <Accounts users={users} onSelectUser={handleSelectUser} onClose={handleMenuShow} />
           )}
           {showPayBills && (
-            <PayBills onClose={handleMenuShow} />
+            <PayBills onClose={handleMenuShow} onPayBill={handleWithdrawal} user={selectedUser} />
           )}
         </div>
       </>

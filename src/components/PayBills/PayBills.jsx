@@ -10,9 +10,10 @@ import payImg from '../../assets/pay-white.svg'
 import closeImg from '../../assets/close-white.svg'
 import closeGrayImg from '../../assets/close.svg'
 
-function PayBills({onClose}) {
+function PayBills({onClose, onPayBill, user}) {
 
     const [selectedBill, setSelectedBill] = useState('');
+    const [paymentAmount, setPaymentAmount] = useState('');
 
     const handleBillClick = (billType) => {
         setSelectedBill(billType);
@@ -20,15 +21,32 @@ function PayBills({onClose}) {
     
     const handleClose = () => {
         setSelectedBill('');
+        setPaymentAmount('');
     };
     
     function handleCloseClick() {
         onClose();    
      }
 
+     const handlePayBill = () => {
+        const amount = parseFloat(paymentAmount);
+        if (isNaN(amount) || amount <= 0) {
+          alert('Please enter a valid payment amount.');
+          return;
+        }
+        
+        if (amount > user.balance) {
+          alert('Insufficient balance for this payment.');
+          return;
+        }
+    
+        onPayBill(amount); // Deduct the amount from the user’s balance
+        handleClose();
+      };
+
     return (
         <div id="paybills-container">
-            <img id='paybills-close' src={closeGrayImg} onClick={handleCloseClick} />
+            <img id='paybills-close' alt='close' src={closeGrayImg} onClick={handleCloseClick} />
             <h2 id="title">Pay Bills</h2>
             
             <div id="menu-container">
@@ -67,11 +85,13 @@ function PayBills({onClose}) {
                 maxLength={7}
                 placeholder='input payment'
                 min={1}
+                value={paymentAmount}
+                onChange={(e) => setPaymentAmount(e.target.value)}
             />
             
             <div id="pay-close">
-                <img id='pay-img' src={payImg} />
-                <img id='closeImg' src={closeImg} onClick={handleClose} />
+                <img id='pay-img' alt='pay' src={payImg} onClick={handlePayBill} />
+                <img id='closeImg' alt='cancel' src={closeImg} onClick={handleClose} />
             </div>
         </div>
     )}

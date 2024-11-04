@@ -1,6 +1,6 @@
 import './Users.css';
 import { useState } from 'react';
-import closeBtn from "../../assets/close.svg"
+
 
 function Users({ users, setUsers, onClose }) {
     const [firstName, setFirstName] = useState('');
@@ -10,25 +10,9 @@ function Users({ users, setUsers, onClose }) {
     const [balance, setBalance] = useState('');
     
     const emailRegEx = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/; // filter for email format
-    const nameRegEx = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    const nameRegEx = /^[A-Za-z]+$/;
 
-     // Handlers to prevent invalid input in name fields
-     const handleFirstNameChange = (e) => {
-        if (nameRegEx.test(e.target.value)) {
-            setFirstName(e.target.value);
-        } else {
-            alert("Please enter letters only for First Name.");
-        }
-    };
-
-    const handleLastNameChange = (e) => {
-        if (nameRegEx.test(e.target.value)) {
-            setLastName(e.target.value);
-        } else {
-            alert("Please enter letters only for Last Name.");
-        }
-    };
-
+     
     // function for submit button
     const handleSubmit = (event) => {
         event.preventDefault(); // para d mag refresh pag submit
@@ -37,11 +21,27 @@ function Users({ users, setUsers, onClose }) {
             alert("All fields must be filled out!");
             return; 
         }
-        
+         // Name validation
+        if (!nameRegEx.test(firstName) || !nameRegEx.test(lastName)) {
+            alert("Please enter a valid name.");
+            return;
+        }
+
         if (!emailRegEx.test(email)) {
             alert("Please enter a valid email address (e.g., name@example.com)");
             return;
         }
+
+    // Check if a user with the same first and last name already exists
+    const isDuplicate = users.some(user => 
+        user["First Name"] === firstName && user["Last Name"] === lastName
+        );
+
+        if (isDuplicate) {
+            alert("An account with this name already exists. Please use a different name.");
+            return;
+        }
+
 
         // create newUser object
         const newUser = {
@@ -70,14 +70,14 @@ function Users({ users, setUsers, onClose }) {
     return (
         <div id="contain">
             <form id="form-container" onSubmit={handleSubmit}>
-                {/* <img src={closeBtn} id="close-button" alt="Close" onClick={onClose} /> */}
+                
                 <h2>Add Kamote</h2>
                 <input
                     className="input-box"
                     type="text"
                     placeholder="First Name"
                     value={firstName}
-                    onChange={(e) => setFirstName(e.target.value)}
+                    onChange={ (e) => setFirstName(e.target.value)}
                     required
                 /><br/>
                 <input
@@ -85,7 +85,7 @@ function Users({ users, setUsers, onClose }) {
                     type="text"
                     placeholder="Last Name"
                     value={lastName}
-                    onChange={{handleLastNameChange}}
+                    onChange={(e) => setLastName(e.target.value)}
                     required
                 /><br/>
                 <input

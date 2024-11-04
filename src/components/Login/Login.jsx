@@ -10,7 +10,7 @@ function Login({ onLogin }) {
   const [users, setUsers] = useState([
     {
       email: "admin@kamote.ph",
-      password: "admin"
+      password: "kamote"
     }
   ]);
 

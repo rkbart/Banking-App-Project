@@ -19,9 +19,8 @@ function Accounts({ users, onSelectUser, onClose }) { //
        onClose();    
     }
 
-    // Function to handle user selection
     const handleUserClick = (user) => {
-        onSelectUser(user); // Notify the parent component
+        onSelectUser(user); // notify the parent component
         onClose();
     };
 
@@ -31,7 +30,6 @@ function Accounts({ users, onSelectUser, onClose }) { //
             <img src={closeAccountsBtn} id="close-accts-button" alt="Close" onClick={handleCloseClick} />
             <h2>Select Kamote</h2>
             <ul id="userlist">
-                {/* Display users from the Users component */}
                 {users.map((user, index) => (
                     <div key={index} className="user-entry" onClick={() => handleUserClick(user)}>
                         <img src={userImg} className="avatar" alt="User Avatar" />
