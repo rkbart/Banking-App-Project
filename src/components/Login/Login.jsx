@@ -1,7 +1,6 @@
 import './Login.css';
 import google from "../../assets/google.png";
-import apple from "../../assets/apple.png";
-import kamote from "../../assets/sweet-potato.png"
+import kamote from "../../assets/sweet-potato.png";
 import { useState } from 'react';
 
 function Login({ onLogin }) {
@@ -14,6 +13,7 @@ function Login({ onLogin }) {
       password: "kamote"
     }
   ]);
+  const [isKamoteLogin, setIsKamoteLogin] = useState(false); // Track if Kamote login is selected
 
   const emailRegEx = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
@@ -21,14 +21,15 @@ function Login({ onLogin }) {
   const handleLogin = (event) => {
     event.preventDefault();
     
-    if (!emailRegEx.test(userEmail)) {
+    // If the user is logging in via Kamote, skip email validation
+    if (!isKamoteLogin && !emailRegEx.test(userEmail)) {
       alert("Please enter a valid email address (e.g., name@example.com)");
       return;
     }
-    
-    // Validate user credentials
+
+    // Validate user credentials (either via Kamote or standard login)
     const user = users.find((u) => u.email === userEmail && u.password === userPassword);
-    if (user) {
+    if (user || (isKamoteLogin && userPassword === 'kamote')) {
       alert("Login successful!");
       onLogin();
     } else {
@@ -60,7 +61,13 @@ function Login({ onLogin }) {
     setUserEmail('');
     setUserPassword('');
     setIsSignUp(false); // Switch back to login form after signing up
-    console.log(users)
+  };
+
+  // Handle Kamote login option
+  const handleKamoteLogin = () => {
+    setIsKamoteLogin(true); // Mark that Kamote login was selected
+    setUserEmail('admin@kamote.ph'); // Set a dummy value for the email
+    setUserPassword('kamote'); // Set the predefined password for Kamote
   };
 
   return (
@@ -77,7 +84,7 @@ function Login({ onLogin }) {
               </a>
             </div>
             <div className="option">
-              <a href="#" onClick={handleLogin}>
+              <a href="#" onClick={handleKamoteLogin}>
                 <img src={kamote} alt="kamote" />
                 <span>Kamote</span>
               </a>
@@ -85,9 +92,7 @@ function Login({ onLogin }) {
           </div>
         )}
 
-        {!isSignUp && (
-          <p className="separator"><span>or</span></p>
-        )}
+        {!isSignUp && <p className="separator"><span>or</span></p>}
 
         <div className="input_box">
           <label htmlFor="email">Email</label>
@@ -98,7 +103,7 @@ function Login({ onLogin }) {
             onChange={(e) => setUserEmail(e.target.value)}
             placeholder="Enter email address"
             autoComplete="off"
-            required
+            required={!isKamoteLogin} // Only require email if it's not a Kamote login
           />
         </div>
 

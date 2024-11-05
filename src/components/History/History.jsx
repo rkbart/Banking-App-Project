@@ -1,4 +1,5 @@
-import "./History.css";
+import './History.css';
+
 function History({ transactionHistory }) {
     const formatBalance = (amount) => {
         return amount.toLocaleString('en-US', {
@@ -7,6 +8,7 @@ function History({ transactionHistory }) {
             maximumFractionDigits: 2,
         });
     };
+
     return (
         <div id="history-container">
             <h3>Transaction History</h3>
@@ -22,14 +24,26 @@ function History({ transactionHistory }) {
                     </thead>
                     <tbody>
                         {transactionHistory.length > 0 ? (
-                            transactionHistory.map((transaction, index) => (
-                                <tr key={index}>
-                                    <td>{transaction.user}</td>
-                                    <td>{transaction.activity}</td>
-                                    <td>{transaction.date}</td>
-                                    <td id="col-amount">PHP {formatBalance(transaction.amount)}</td>
-                                </tr>
-                            ))
+                            transactionHistory.map((transaction, index) => {
+                                // Determine the CSS class based on activity type
+                                let amountClass = '';
+                                if (transaction.activity === 'Deposit') {
+                                    amountClass = 'deposit-amount'; // Green for deposits
+                                } else if (transaction.activity === 'Withdrawal' || transaction.activity === 'Transfer' || transaction.activity === 'Pay Bills' || transaction.activity === 'Buy Load') {
+                                    amountClass = 'expense-amount'; // Red for withdrawals, transfers, etc.
+                                }
+
+                                return (
+                                    <tr key={index}>
+                                        <td>{transaction.user}</td>
+                                        <td>{transaction.activity}</td>
+                                        <td>{transaction.date}</td>
+                                        <td id="col-amount" className={amountClass}>
+                                            PHP {formatBalance(transaction.amount)}
+                                        </td>
+                                    </tr>
+                                );
+                            })
                         ) : (
                             <tr>
                                 <td colSpan="4">No transactions available.</td>
@@ -41,4 +55,5 @@ function History({ transactionHistory }) {
         </div>
     );
 }
+
 export default History;
