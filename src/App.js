@@ -8,7 +8,7 @@ import PayBills from './components/PayBills/PayBills.jsx';
 import History from './components/History/History.jsx';
 import Login from './components/Login/Login.jsx';
 import BuyLoad from './components/BuyLoad/BuyLoad.jsx'
-import Budget from './components/Budget/Budget.jsx`'
+import Budget from './components/Budget/Budget.jsx';
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false); 
