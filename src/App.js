@@ -113,6 +113,30 @@ function App() {
     });
   };
 
+  const handleBillsPayment = (amount, billType) => {
+    setUsers((prevUsers) => {
+      return prevUsers.map((user) => {
+        if (user.email === selectedUser.email) {
+          const updatedUser = { ...user, balance: user.balance - amount };
+          setSelectedUser(updatedUser);
+  
+          // Add the "Pay Bills" transaction to the history
+          setTransactionHistory((prevHistory) => [
+            ...prevHistory,
+            {
+              user: `${user["First Name"]} ${user["Last Name"]}`,
+              activity: `Pay Bills (${billType})`, // Log the bill type
+              amount,
+              date: new Date().toLocaleString(),
+            },
+          ]);
+          return updatedUser;
+        }
+        return user;
+      });
+    });
+  };
+
   const handleTransfer = (amount, selectedTransferUser) => {
     // First, update both users' balances (sender and recipient)
     setUsers((prevUsers) => {
@@ -149,6 +173,30 @@ function App() {
     handleMenuShow();
   };
   
+  const handleAutoLoad = (amount) => {
+    setUsers((prevUsers) => {
+      return prevUsers.map((user) => {
+        if (user.email === selectedUser.email) {
+          const updatedUser = { ...user, balance: user.balance - amount };
+          setSelectedUser(updatedUser);
+
+          // Log the Buy Load activity in the transaction history
+          setTransactionHistory((prevHistory) => [
+            ...prevHistory,
+            {
+              user: `${user["First Name"]} ${user["Last Name"]}`,
+              activity: "Buy Load",
+              amount,
+              date: new Date().toLocaleString(),
+            },
+          ]);
+          return updatedUser;
+        }
+        return user;
+      });
+    });
+};
+
   const onDepositToUser = (email, amount) => {
     setUsers((prevUsers) => {
       return prevUsers.map((user) => {
@@ -254,13 +302,13 @@ return (
               <Accounts users={users} onSelectUser={handleSelectUser} onClose={handleMenuShow} />
             )}
             {showPayBills && (
-              <PayBills onClose={handleMenuShow} onPayBill={handleWithdrawal} user={selectedUser} />
+              <PayBills onClose={handleMenuShow} onPayBill={handleBillsPayment} user={selectedUser} isUserSelected={isUserSelected} />
             )}
             {showBudget && (
               <Budget onClose={handleMenuShow} onBudget={handleBudget}  />
             )}
             {showBuyLoad && (
-              <BuyLoad onClose={handleMenuShow} onBuyLoad={handleBuyLoad}  />
+              <BuyLoad onClose={handleMenuShow} onBuyLoad={handleAutoLoad} user={selectedUser}  />
             )}
           </div>
         </>

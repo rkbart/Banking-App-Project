@@ -54,6 +54,7 @@
 .payImg{
     color: whitesmoke;
     vertical-align: middle;
+    cursor: pointer;
 }
 
 .buyLoadForText, .selectTelcoText {

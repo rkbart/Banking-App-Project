@@ -14,7 +14,7 @@ function PayBills({onClose, onPayBill, user}) {
 
     const [selectedBill, setSelectedBill] = useState('');
     const [paymentAmount, setPaymentAmount] = useState('');
-
+   
     const handleBillClick = (billType) => {
         setSelectedBill(billType);
     }
@@ -31,6 +31,7 @@ function PayBills({onClose, onPayBill, user}) {
      const handlePayBill = () => {
         const amount = parseFloat(paymentAmount);
         if (isNaN(amount) || amount <= 0) {
+
           alert('Please enter a valid payment amount.');
           return;
         }
@@ -40,7 +41,7 @@ function PayBills({onClose, onPayBill, user}) {
           return;
         }
     
-        onPayBill(amount); // Deduct the amount from the user’s balance
+        onPayBill(amount, selectedBill); // Deduct the amount from the user’s balance
         handleClose();
       };
 

@@ -6,7 +6,7 @@ import depositImg from "../../assets/deposit.svg";
 import closeImg from "../../assets/close.svg";
 
 
-function Details({user, users, onDeposit, onWithdrawal, onDepositToUser, isUserSelected, onLogout, onSubmitTransfer}) {
+function Details({user, users, onDeposit, onWithdrawal, isUserSelected, onLogout, onSubmitTransfer}) {
     
     const [showInput, setShowInput] = useState(false);
     const [inputAmount, setInputAmount] = useState('');
