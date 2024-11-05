@@ -1,0 +1,63 @@
+.buyLoad-container {
+    text-align: center;
+    padding: 15px; 
+    border-radius: 15px; 
+    height: auto;
+    background-color: whitesmoke;
+    color: #707070;
+    position: relative;
+    width: 45vw;
+    margin: 0.5rem;
+    height: 210px;
+}
+
+.buyLoad-header {
+    font-size: 1.5em;
+    display: inline;
+}
+
+.closeIcon {
+    float: right;
+    width: 18px;
+    margin: 0;
+    cursor: pointer;
+}
+
+.network-dropdown{
+    margin-top: 10px;
+}
+
+.telco-option-css, .input-css-load {
+    padding: 0.2rem;
+    padding-left: 0.5rem;
+    outline: none;
+    border:none;
+    border-radius: 10px;
+}
+
+.telco-option-css, #buyLoadFor {
+    width: 70%;
+}
+
+.payLoad {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: #b2005e;
+    border-radius: 15px;
+    color: whitesmoke;
+    margin-top: 18px;
+    height: 40px;
+}
+
+.payImg{
+    color: whitesmoke;
+    vertical-align: middle;
+}
+
+.buyLoadForText, .selectTelcoText {
+    padding-left: 18px;
+    text-align: left;
+
+}

@@ -1,0 +1,47 @@
+#history-container {
+    background-color: whitesmoke;
+    width: 45vw;
+    height: 300px;
+    color: #707070;
+    border-radius: 15px;
+    padding: 1rem;
+    overflow-y: hidden;  /* Hide any overflow in the container itself */
+    position: relative;  /* Necessary for positioning child elements */
+}
+#history-container h3 {
+    position: sticky;
+    top: 0;
+    background-color: whitesmoke;
+    padding: 0.5rem;
+    font-size: 1.2em;
+    z-index: 10; /* Ensure header stays above table rows */
+    border-bottom: 2px solid #ddd;
+}
+#history-table-container {
+    max-height: 250px; /* Adjust based on your container size */
+    overflow-y: auto;  /* Scroll only when the table overflows */
+}
+#history-table {
+    width: 100%;
+    border-collapse: collapse; /* Collapse borders for neatness */
+    text-align: center;
+}
+th, td {
+    padding: 8px;
+    text-align: center;
+    border-bottom: 1px solid #DDD;
+}
+#col-amount {
+    text-align: left;
+}
+tr:nth-child(even) {
+    background-color: #D6EEEE;
+}
+tr:hover {
+    background-color: #D6EEEE;
+}
+/* If no transactions, show appropriate message */
+tbody tr td[colspan="4"] {
+    text-align: center;
+    font-style: italic;
+}
