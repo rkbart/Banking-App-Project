@@ -6,6 +6,10 @@ import billsIcon from '../../assets/payments_Budget.svg'
 import othersIcon from '../../assets/others_Budget.svg'
 import deleteIcon from '../../assets/close.svg'
 import closeIcon from '../../assets/close.svg'
+import { Pie } from 'react-chartjs-2';
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+ChartJS.register(ArcElement, Tooltip, Legend);
+
 
 function Budget({onClose, onBudget}) {
     const [budgetVisible, setBudgetVisible] = useState(false);
@@ -18,6 +22,57 @@ function Budget({onClose, onBudget}) {
         setErrorVisible(false);
     }
     const [updateBudget, setUpdateBudget] = useState('');
+    const [graphVisible, setGraphVisible] = useState(true);
+    const generateChartData = () => {
+        const categoryTotals = expenses.reduce((acc, expense) => {
+            acc[expense.category] = (acc[expense.category] || 0) + expense.amount;
+            return acc;
+        }, {});
+
+        return {
+            labels: Object.keys(categoryTotals), // Expense categories
+            datasets: [
+                {
+                    // label: 'Expenses by Category',
+                    data: Object.values(categoryTotals), // Amounts per category
+                    backgroundColor: [
+                        '#FFCE56',
+                        '#FF6384', // Color for each category (customize as needed)
+                        '#36A2EB',
+                        '#34c742',
+                    ],
+                    hoverBackgroundColor: [
+                        '#FFCE56',
+                        '#FF6384',
+                        '#36A2EB',
+                        '#34c742',
+                    ]
+                },
+            ],
+        };
+    };
+
+    // Chart options for displaying legend with labels
+const chartOptions = {
+    plugins: {
+        legend: {
+            position: 'right', // Position the legend to the right
+            labels: {
+                boxWidth: 20, // Width of color box
+                padding: 15, // Space between each legend item
+                generateLabels: (chart) => {
+                    const data = chart.data;
+                    return data.labels.map((label, i) => ({
+                        text: label, // Label text
+                        fillStyle: data.datasets[0].backgroundColor[i], // Match color
+                        fontColor: "whitesmoke",
+                        hidden: false,
+                    }));
+                },
+            },
+        },
+    },
+};
 
     const handleBudgetInput = (e) => {
         const value = e.target.value;
@@ -124,8 +179,7 @@ const handleDeleteExpense = (index) => {
 
             <div className="budget-display-container">
                 <span><img className='closeIconBudget' src ={closeIcon} onClick={onClose}/></span>
-                <div className= "closeIconBudget-container">
-                </div>
+                
                     
                 <p className="budget-header"> Budget Tracker </p>
              
@@ -255,6 +309,16 @@ const handleDeleteExpense = (index) => {
             </div>
             <button className="addBtn" onClick={displayAddExpense}>Add Expense</button>
         </div>
+
+        {graphVisible && 
+            
+            <div className="graph">
+                <div className="graph">
+                        <Pie data={generateChartData()} options={chartOptions}/>
+                </div>
+            </div>
+            
+            }
         </>
     );
 
