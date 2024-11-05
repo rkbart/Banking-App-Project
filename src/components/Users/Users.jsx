@@ -9,7 +9,7 @@ function Users({ users, setUsers, onClose }) {
     const [password, setPassword] = useState('');
     const [balance, setBalance] = useState('');
     
-    const emailRegEx = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/; // filter for email format
+    const emailRegEx = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/; 
     const nameRegEx = /^[A-Za-z]+$/;
 
      
@@ -43,18 +43,21 @@ function Users({ users, setUsers, onClose }) {
         }
 
 
-        // create newUser object
+        const capitalizedFirstName = firstName.charAt(0).toUpperCase() + firstName.slice(1).toLowerCase();
+        const capitalizedLastName = lastName.charAt(0).toUpperCase() + lastName.slice(1).toLowerCase();
+    
+        // Create newUser object with capitalized names
         const newUser = {
-            "First Name": firstName,
-            "Last Name": lastName,
+            "First Name": capitalizedFirstName,
+            "Last Name": capitalizedLastName,
             email: email,
             password: password,
             balance: Number(balance)
         };
+
         //updates users ARRAY with newUser values
         setUsers([...users, newUser]);
-        console.log([...users, newUser]);
-
+        
         // reset values input fields
         setFirstName('');
         setLastName('');

@@ -6,13 +6,13 @@ import depositImg from "../../assets/deposit.svg";
 import closeImg from "../../assets/close.svg";
 
 
-function Details({user, users, onDeposit, onWithdrawal, onDepositToUser, isUserSelected, onLogout}) {
+function Details({user, users, onDeposit, onWithdrawal, onDepositToUser, isUserSelected, onLogout, onSubmitTransfer}) {
     
     const [showInput, setShowInput] = useState(false);
     const [inputAmount, setInputAmount] = useState('');
-    const [actionType, setActionType] = useState(''); // deposit or withdraw
+    const [actionType, setActionType] = useState(''); // deposit, withdraw, transfer
     const [isBalanceVisible, setIsBalanceVisible] = useState(true); // the eye
-    const [selectedTransferUser, setSelectedTransferUser] = useState(null); // select for transfer
+    const [selectedTransferUser, setSelectedTransferUser] = useState(null); // select for user transfer
 
     const handleEye = () => {
         setIsBalanceVisible((prev) => !prev);
@@ -31,7 +31,7 @@ function Details({user, users, onDeposit, onWithdrawal, onDepositToUser, isUserS
         setShowInput(true);
     
         if (type === 'transfer') {
-            setSelectedTransferUser(users[0]); // Default to the first user
+            setSelectedTransferUser(users[0]); // default to the first user
         }
     };
 
@@ -91,8 +91,8 @@ const handleSubmit = (event) => {
                 alert("Transfer amount exceeds the available balance.");
                 return;
             }
-            onWithdrawal(amount); 
-            onDepositToUser(selectedTransferUser.email, amount); 
+            
+            onSubmitTransfer(amount, selectedTransferUser);
         }
         handleClose(); 
     } else {

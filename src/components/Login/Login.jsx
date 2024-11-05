@@ -1,6 +1,7 @@
 import './Login.css';
 import google from "../../assets/google.png";
 import apple from "../../assets/apple.png";
+import kamote from "../../assets/sweet-potato.png"
 import { useState } from 'react';
 
 function Login({ onLogin }) {
@@ -77,8 +78,8 @@ function Login({ onLogin }) {
             </div>
             <div className="option">
               <a href="#" onClick={handleLogin}>
-                <img src={apple} alt="Apple" />
-                <span>Apple</span>
+                <img src={kamote} alt="kamote" />
+                <span>Kamote</span>
               </a>
             </div>
           </div>
