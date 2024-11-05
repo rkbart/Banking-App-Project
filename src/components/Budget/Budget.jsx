@@ -7,7 +7,7 @@ import othersIcon from '../../assets/others_Budget.svg'
 import deleteIcon from '../../assets/close.svg'
 import closeIcon from '../../assets/close.svg'
 
-function Budget({onClose}) {
+function Budget({onClose, onBudget}) {
     const [budgetVisible, setBudgetVisible] = useState(false);
     const displayBudgetModal = () => setBudgetVisible(true);
     const hideBudgetModal = () => setBudgetVisible(false);

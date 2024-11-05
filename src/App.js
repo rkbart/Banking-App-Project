@@ -7,8 +7,8 @@ import Menu from '../src/components/Menu/Menu.jsx';
 import PayBills from './components/PayBills/PayBills.jsx';
 import History from './components/History/History.jsx';
 import Login from './components/Login/Login.jsx';
-import BuyLoad from './components/BuyLoad/BuyLoad.jsx';
-import Budget from './components/BuyLoad/Budget.jsx';
+import BuyLoad from './components/BuyLoad/BuyLoad.jsx'
+import Budget from './components/Budget/Budget.jsx`'
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false); 
@@ -58,8 +58,8 @@ function App() {
   const [showUsers, setShowUsers] = useState(false);
   const [showAccounts, setShowAccounts] = useState(false);
   const [showPayBills, setPayBills] = useState(false);
-  // const [showBuyLoad, setBuyLoad] = useState(false);
-  // const [showBudget, setBudget] = useState(false);
+  const [showBuyLoad, setBuyLoad] = useState(false);
+  const [showBudget, setBudget] = useState(false);
   const [isUserSelected, setIsUserSelected] = useState(false);
 
   const handleSelectUser = (user) => {
@@ -165,8 +165,8 @@ function App() {
     setShowUsers(false);
     setShowAccounts(false);
     setPayBills(false);
-    // setBuyLoad(false);
-    // setBudget(false);
+    setBuyLoad(false);
+    setBudget(false);
 
   };
 
@@ -174,39 +174,39 @@ function App() {
     setShowUsers(true);
     setShowAccounts(false);
     setPayBills(false);
-    // setBuyLoad(false);
-    // setBudget(false);
+    setBuyLoad(false);
+    setBudget(false);
   };
 
   const handleManageAccounts = () => {
     setShowAccounts(true);
     setShowUsers(false);
     setPayBills(false);
-    // setBuyLoad(false);
-    // setBudget(false);
+    setBuyLoad(false);
+    setBudget(false);
   };
 
   const handlePayBills = () => {
     setPayBills(true);
     setShowAccounts(false);
     setShowUsers(false);
-    // setBuyLoad(false);
-    // setBudget(false);
+    setBuyLoad(false);
+    setBudget(false);
   };
-  // const handleBuyLoad = () => {
-  //   setPayBills(false);
-  //   setShowAccounts(false);
-  //   setShowUsers(false);
-  //   setBuyLoad(true);
-  //   setBudget(false);
-  // };
-  // const handleBudget = () => {
-  //   setPayBills(false);
-  //   setShowAccounts(false);
-  //   setShowUsers(false);
-  //   setBuyLoad(false);
-  //   setBudget(true);
-  // };
+  const handleBuyLoad = () => {
+    setPayBills(false);
+    setShowAccounts(false);
+    setShowUsers(false);
+    setBuyLoad(true);
+    setBudget(false);
+  };
+  const handleBudget = () => {
+    setPayBills(false);
+    setShowAccounts(false);
+    setShowUsers(false);
+    setBuyLoad(false);
+    setBudget(true);
+  };
 
   
 return (
@@ -238,8 +238,8 @@ return (
                 onAddUser={handleAddUser}
                 onManageAccounts={handleManageAccounts}
                 onPayBills={handlePayBills}
-                // onBuyLoad={handleBuyLoad}
-                // onBudget={handleBudget}
+                onBuyLoad={handleBuyLoad}
+                onBudget={handleBudget}
               />
             )}
             {console.log('Transaction History:', transactionHistory)}
@@ -255,6 +255,12 @@ return (
             )}
             {showPayBills && (
               <PayBills onClose={handleMenuShow} onPayBill={handleWithdrawal} user={selectedUser} />
+            )}
+            {showBudget && (
+              <Budget onClose={handleMenuShow} onBudget={handleBudget}  />
+            )}
+            {showBuyLoad && (
+              <BuyLoad onClose={handleMenuShow} onBuyLoad={handleBuyLoad}  />
             )}
           </div>
         </>
