@@ -47,7 +47,7 @@ function PayBills({onClose, onPayBill, user}) {
 
     return (
         <div id="paybills-container">
-            <img id='paybills-close' alt='close' src={closeGrayImg} onClick={handleCloseClick} />
+            {/* <img id='paybills-close' alt='close' src={closeGrayImg} onClick={handleCloseClick} /> */}
             <h2 id="title">Pay Bills</h2>
             
             <div id="menu-container">

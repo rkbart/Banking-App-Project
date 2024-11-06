@@ -1,6 +1,8 @@
 #menu {
     display: flex;
+    flex-direction: column;
     justify-content: space-around;
+    align-items: center;
     margin-top: 5px;
     margin-bottom: 5px;
     background-color: var(--eerie_black_light);
@@ -8,18 +10,20 @@
     padding-bottom: 0.5rem;
     border-radius: 15px;
     color: var(--white);
-    width: 45vw; 
-    max-width: 1200px; 
-    height: auto; /* Allow height to adjust to content */
+    /* width: 45vw;  */
+    width: 120px;
+    /* max-width: 1200px;  */
+    height: 100%; /* Allow height to adjust to content */
 }
 
 #send-money, #manage-accounts, #add-user, #budget, #buy-load, #pay-bills {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
     cursor: pointer;
     width: 50px;
+    gap: 5px;
 }
 
 p{ 

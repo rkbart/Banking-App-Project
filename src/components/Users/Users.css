@@ -1,5 +1,5 @@
 
-#form-container {
+#form-container {   
     display: flex;
     justify-content: center;
     flex-direction: column; /* Ensure vertical stacking */
@@ -8,9 +8,9 @@
     width: 45vw; 
     background-color: var(--eerie_black_light);
     border-radius: 15px;
-    padding: 1rem; /* Adjust as necessary */
+    padding: 15px; /* Adjust as necessary */
     z-index: 1; /* Ensure it stacks above the background */
-    margin: 0.5rem;
+    margin-bottom: 12px;
 }
 
 .input-box {

@@ -6,7 +6,7 @@ import depositImg from "../../assets/deposit.svg";
 import closeImg from "../../assets/close.svg";
 
 
-function Details({user, users, onDeposit, onWithdrawal, isUserSelected, onLogout, onSubmitTransfer}) {
+function Details({user, users, onDeposit, onWithdrawal, isUserSelected, onSubmitTransfer}) {
     
     const [showInput, setShowInput] = useState(false);
     const [inputAmount, setInputAmount] = useState('');
@@ -119,9 +119,6 @@ const handleSubmit = (event) => {
                 </span>
                 <span id="transfer" onClick={() => handleActionClick('transfer')}>
                     <img src={depositImg} alt="transfer"/> Transfer
-                </span>
-                <span id="logout" onClick={onLogout}> 
-                    <img src={depositImg} alt="logout" /> Log out
                 </span>
             </div>
 

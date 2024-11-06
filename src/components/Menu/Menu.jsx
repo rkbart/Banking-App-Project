@@ -4,9 +4,9 @@ import manageAccountImg from '../../assets/manage-accounts.svg'
 import budgetImg from '../../assets/budget.svg'
 import buyLoadImg from '../../assets/buy-load.svg'
 import payBillsImg from '../../assets/pay-bills.svg'
+import depositImg from "../../assets/deposit.svg";
 
-
-function Menu({ onAddUser, onManageAccounts, onPayBills, onBudget, onBuyLoad }) {
+function Menu({ onAddUser, onManageAccounts, onPayBills, onBudget, onBuyLoad, onLogout, }) {
         
     const handleAddUserClick = () => {
         onAddUser(); // Call the function to show Users component
@@ -32,10 +32,10 @@ function Menu({ onAddUser, onManageAccounts, onPayBills, onBudget, onBuyLoad }) 
                 <img src={addAccountImg} alt="add account"/>
                 <p>Add</p> 
             </div>
-            <div id="manage-accounts" onClick={handleManageAccountsClick}>
+            {/* <div id="manage-accounts" onClick={handleManageAccountsClick}>
                 <img src={manageAccountImg} alt="manage account"/>
                 <p>Manage</p> 
-            </div>
+            </div> */}
             <div id="budget" onClick={handleBudgetClick}>
                 <img src={budgetImg} alt="budget" />
                 <p>Budget</p> 
@@ -44,9 +44,14 @@ function Menu({ onAddUser, onManageAccounts, onPayBills, onBudget, onBuyLoad }) 
                 <img src={buyLoadImg} alt="buy load" />
                 <p>Buy Load</p> 
             </div>
-            <div id="pay-bills" onClick={handlePayBillsClick}>
+            {/* <div id="pay-bills" onClick={handlePayBillsClick}>
                 <img src={payBillsImg} alt="pay-bills"/>
                 <p>Pay Bills</p> 
+            </div> */}
+            <div>
+                <span id="logout" onClick={onLogout}> 
+                    <img src={depositImg} alt="logout" /> Log out
+                </span>
             </div>
         </div>
     )

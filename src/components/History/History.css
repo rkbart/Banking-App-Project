@@ -7,6 +7,7 @@
     padding: 1rem;
     overflow-y: hidden;  /* Hide any overflow in the container itself */
     position: relative;  /* Necessary for positioning child elements */
+    margin-left: 0px;
 }
 #history-container h3 {
     position: sticky;
