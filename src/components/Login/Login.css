@@ -160,7 +160,8 @@ a {
 }
 
 a:hover {
-    text-decoration: underline;
+    /* text-decoration: underline; */
+    color: var(--yellow);
 }
 
 a:focus {

@@ -214,7 +214,6 @@ function App() {
     setPayBills(false);
     setBuyLoad(false);
     setBudget(false);
-
   };
 
   const handleAddUser = () => {
@@ -264,13 +263,14 @@ return (
         </div>
       ) : (
         <>
+        {console.log('Selected User:', selectedUser)}
           <div id="upper-wrapper">
             {selectedUser && (
               <Details
                 user={selectedUser}
                 onDeposit={handleDeposit}
                 onWithdrawal={handleWithdrawal}
-                // onDepositToUser={onDepositToUser}
+                onDepositToUser={onDepositToUser}
                 users={users}
                 isUserSelected={isUserSelected}
                 onLogout={handleLogout}
@@ -292,25 +292,14 @@ return (
             <History transactionHistory={transactionHistory} />
           </div>
 
-          <div id="lower-wrapper">
-            {showUsers && (
-              <Users users={users} setUsers={setUsers} onClose={handleMenuShow} />
-            )}
-            {showAccounts && (
-              <Accounts users={users} onSelectUser={handleSelectUser} onClose={handleMenuShow} />
-            )}
-            {showPayBills && (
-              <PayBills onClose={handleMenuShow} onPayBill={handleBillsPayment} user={selectedUser} isUserSelected={isUserSelected} />
-            )}
-            {showBudget && (
-              <Budget onClose={handleMenuShow} onBudget={handleBudget}  />
-            )}
-            {showBuyLoad && (
-              <BuyLoad onClose={handleMenuShow} onBuyLoad={handleAutoLoad} user={selectedUser}  />
-            )}
-          </div>
+              {/* modals starts here */}
+
+              {showBudget && (
+                <Budget onClose={handleMenuShow} onBudget={handleBudget}  />
+              )} 
         </>
       )}
+    
     </div>
   );
 }

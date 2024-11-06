@@ -3,19 +3,19 @@
     text-align: center;
     padding: 20px; 
     border-radius: 15px; 
-    height: 210px;
+    height: 35vh;
     background-color: var(--eerie_black_light);
     color: var(--white);
     position: relative;
-    width: 45vw;
-    margin: 0.5rem;
+    width: 38vw;
+    margin-top: 0.5rem;
 
 }
 
 #menu-container {
     display: flex;
     justify-content: space-between;
-    
+    font-size: 14px;
 }
 
 #menu-container > div {
@@ -25,7 +25,7 @@
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    gap: 0.5rem;
+    gap: 12px;
     cursor: pointer;
 }
 
@@ -41,9 +41,10 @@
     justify-content: center;
     align-items: center;
     gap: 0.5rem;
-    background-color: var(--eerie_black_dark);
+    background-color: var(--purple);
     border-radius: 15px;
     color: whitesmoke;
+    margin-top: 4px;
 }
 #electricity-input, #water-input, #internet-input, #telecoms-input, #cards-input, #others-input {
     padding: 0.2rem;
