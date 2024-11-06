@@ -306,8 +306,9 @@ const handleDeleteExpense = (index) => {
                 ) : (
                     <div className = "expense-book-list">No expenses added yet.</div>
                 )}
+                
+                <button className="addBtn" onClick={displayAddExpense}>Add Expense</button>
             </div>
-            <button className="addBtn" onClick={displayAddExpense}>Add Expense</button>
         </div>
 
         {graphVisible && 

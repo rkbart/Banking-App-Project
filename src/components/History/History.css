@@ -1,8 +1,8 @@
 #history-container {
-    background-color: whitesmoke;
+    background-color: var(--eerie_black_light);
     width: 45vw;
     height: 300px;
-    color: #707070;
+    color: var(--white);
     border-radius: 15px;
     padding: 1rem;
     overflow-y: hidden;  /* Hide any overflow in the container itself */
@@ -11,7 +11,7 @@
 #history-container h3 {
     position: sticky;
     top: 0;
-    background-color: whitesmoke;
+    background-color: var(--eerie_black_light);
     padding: 0.5rem;
     font-size: 1.2em;
     z-index: 10; /* Ensure header stays above table rows */
@@ -38,7 +38,7 @@ tr:nth-child(even) {
     background-color: #D6EEEE;
 }
 tr:hover {
-    background-color: #D6EEEE;
+    background-color: var(--eerie_black_dark);
 }
 /* If no transactions, show appropriate message */
 tbody tr td[colspan="4"] {

@@ -4,8 +4,8 @@
     padding: 20px; 
     border-radius: 15px; 
     height: 210px;
-    background-color: whitesmoke;
-    color: #707070;
+    background-color: var(--eerie_black_light);
+    color: var(--white);
     position: relative;
     width: 45vw;
     margin: 0.5rem;
@@ -41,7 +41,7 @@
     justify-content: center;
     align-items: center;
     gap: 0.5rem;
-    background-color: #b2005e;
+    background-color: var(--eerie_black_dark);
     border-radius: 15px;
     color: whitesmoke;
 }

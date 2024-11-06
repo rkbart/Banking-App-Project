@@ -6,7 +6,7 @@
     align-items: center;
     height: auto; /* Set to auto to allow for dynamic content height */
     width: 45vw; 
-    background-color: whitesmoke;
+    background-color: var(--eerie_black_light);
     border-radius: 15px;
     padding: 1rem; /* Adjust as necessary */
     z-index: 1; /* Ensure it stacks above the background */
@@ -21,6 +21,8 @@
     padding: 10px; 
     border: 1px solid #424242;
     border-radius: 5px;
+    background-color: var(--eerie_black_dark);
+    color: var(--white);
     /* margin: 0; */
 }
 
@@ -32,7 +34,8 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 #submit {
-    background-color: #b2005e;
+    background: rgb(78,49,170);
+    background: radial-gradient(circle, rgba(78,49,170,1) 0%, rgba(58,16,120,1) 0%);
     color: whitesmoke; 
     padding: 5px 15px; 
     border-radius: 5px; 
@@ -42,8 +45,8 @@ input[type=number]::-webkit-outer-spin-button {
     border: none; 
 }
  #cancel {
-    background-color: #b2005e;
-    color: whitesmoke; 
+    background-color: var(--eerie_black_dark);
+    color: var(--white); 
     padding: 5px 15px; 
     border-radius: 5px; 
     width: fit-content; 

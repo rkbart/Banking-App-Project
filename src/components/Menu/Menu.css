@@ -3,11 +3,11 @@
     justify-content: space-around;
     margin-top: 5px;
     margin-bottom: 5px;
-    background-color: whitesmoke;
+    background-color: var(--eerie_black_light);
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
     border-radius: 15px;
-    color: #707070;
+    color: var(--white);
     width: 45vw; 
     max-width: 1200px; 
     height: auto; /* Allow height to adjust to content */

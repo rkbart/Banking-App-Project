@@ -2,7 +2,7 @@
     text-align: center;
     height: auto; 
     width: 45vw; 
-    background-color: whitesmoke;
+    background-color: var(--eerie_black_light);
     border-radius: 15px;
     padding: 1rem; /* Adjust as necessary */
     z-index: 1; /* Ensure it stacks above the background */
@@ -10,12 +10,12 @@
 }
 
 #userlist {
-    color: #707070;
+    color: var(--white);
     font-size: 20px;
     margin-top: 1rem;
     overflow-y: auto; 
     max-height: 125px; 
-    background-color: whitesmoke;
+    background-color:  var(--eerie_black_light);
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
