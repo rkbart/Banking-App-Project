@@ -1,6 +1,7 @@
 import './Login.css';
 import google from "../../assets/google.png";
 import kamote from "../../assets/sweet-potato.png";
+import kamoteLoginImg from "../../assets/kamoteLogin-img.svg"
 import { useState } from 'react';
 
 function Login({ onLogin }) {
