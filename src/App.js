@@ -53,7 +53,6 @@ function App() {
   });
 
   const [transactionHistory, setTransactionHistory] = useState([]);
-
   const [showMenu, setShowMenu] = useState(true);
   const [showUsers, setShowUsers] = useState(false);
   const [showAccounts, setShowAccounts] = useState(false);
@@ -120,12 +119,11 @@ function App() {
           const updatedUser = { ...user, balance: user.balance - amount };
           setSelectedUser(updatedUser);
   
-          // Add the "Pay Bills" transaction to the history
           setTransactionHistory((prevHistory) => [
             ...prevHistory,
             {
               user: `${user["First Name"]} ${user["Last Name"]}`,
-              activity: `Pay Bills (${billType})`, // Log the bill type
+              activity: `Pay Bills (${billType})`, 
               amount,
               date: new Date().toLocaleString(),
             },
@@ -138,12 +136,12 @@ function App() {
   };
 
   const handleTransfer = (amount, selectedTransferUser) => {
-    // First, update both users' balances (sender and recipient)
+    
     setUsers((prevUsers) => {
       let updatedSender = null;
       let updatedRecipient = null;
   
-      // withdraw
+      // withdraw muna
       const newUsers = prevUsers.map((user) => {
         if (user.email === selectedUser.email) {
           updatedSender = { ...user, balance: user.balance - amount };   // withdraw
