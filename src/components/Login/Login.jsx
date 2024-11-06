@@ -72,9 +72,9 @@ function Login({ onLogin }) {
   };
 
   return (
-    <div className="login_form">
+    <div className={`login_form ${isSignUp ? 'sign-up' : 'login'}`}>
       <form onSubmit={isSignUp ? handleSignUp : handleLogin}>
-        <h3>{isSignUp ? "Sign Up" : "Log in with"}</h3>
+        <h3 className={isSignUp ? 'sign-up-title' : 'login-title'}>{isSignUp ? "Sign Up" : "Log in with"}</h3>
 
         {!isSignUp && (
           <div className="login_option">
@@ -123,7 +123,7 @@ function Login({ onLogin }) {
           />
         </div>
 
-        <button type="submit">{isSignUp ? "Sign Up" : "Log In"}</button>
+        <button type="submit" className={isSignUp ? 'sign-up-btn' : 'login-btn'}>{isSignUp ? "Sign Up" : "Log In"}</button>
 
         {isSignUp ? (
           <p className="sign_up">
