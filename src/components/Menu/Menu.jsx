@@ -36,12 +36,12 @@ function Menu({ onAddUser, onManageAccounts, onPayBills, onBudget, onBuyLoad }) 
                 <img src={manageAccountImg} alt="manage account"/>
                 <p>Manage</p> 
             </div>
-            <div id="budget">
-                <img src={budgetImg} alt="budget" onClick={handleBudgetClick}/>
+            <div id="budget" onClick={handleBudgetClick}>
+                <img src={budgetImg} alt="budget" />
                 <p>Budget</p> 
             </div>
-            <div id="buy-load">
-                <img src={buyLoadImg} alt="buy load" onClick={handleBuyLoadClick}/>
+            <div id="buy-load" onClick={handleBuyLoadClick}>
+                <img src={buyLoadImg} alt="buy load" />
                 <p>Buy Load</p> 
             </div>
             <div id="pay-bills" onClick={handlePayBillsClick}>

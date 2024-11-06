@@ -49,6 +49,7 @@ height: auto;
   flex-direction: row;
   justify-content: space-around;
   align-items: flex-start;
+  background-color: var(--eerie_black_dark);
 }
 
 /* Full-screen overlay for login */
@@ -61,5 +62,6 @@ height: auto;
   transform: translate(-15%, -50%);
   width: 100%; 
   background-color:var(--eerie_black_dark);
+  font-family: "Roboto", serif;
 }
 

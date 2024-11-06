@@ -5,8 +5,7 @@ h2 {
 
 #user-info {
     position: relative;
-    background: rgb(78,49,170);
-    background: radial-gradient(circle, rgba(78,49,170,1) 0%, rgba(58,16,120,1) 0%);
+    background-color: var(--purple);
     padding: 1rem;
     border-radius: 15px;
     color: whitesmoke;
