@@ -11,20 +11,19 @@ import BuyLoad from './components/BuyLoad/BuyLoad.jsx'
 import Budget from './components/Budget/Budget.jsx';
 
 function App() {
-  const [loggedIn, setLoggedIn] = useState(false); 
+  const [loggedIn, setLoggedIn] = useState(false);  // staete whether user is logged in or not
 
   const handleLogin = () => {
-    setLoggedIn(true); //
+    setLoggedIn(true);  // set user as logged in when called
   };
 
-  const handleLogout = () => {
+  const handleLogout = () => { // handle for logging out
     alert("Logged out successfully!");
     setLoggedIn(false); 
-    window.location.reload();
-   
+    window.location.reload(); // refresh page para ma reset
   }
-
-  const [users, setUsers] = useState([
+  
+  const [users, setUsers] = useState([ // initialize array users[]
     {
       "First Name": "Ryan",
       "Last Name": "Bartolome",
@@ -45,14 +44,15 @@ function App() {
     }
   ]);
 
-  const [selectedUser, setSelectedUser] = useState({
-    "First Name": "Welcome,",
-    "Last Name": "Kamote!",
-    email: "admin@kamotebanking.ph",
+  const [selectedUser, setSelectedUser] = useState({ // default user displayed in Details component
+    "First Name": "Welcome to",
+    "Last Name": "Kamote Bank",
+    email: "Where everyone is a kamote.",
     balance: 0
   });
 
-  const [transactionHistory, setTransactionHistory] = useState([]);
+  const [transactionHistory, setTransactionHistory] = useState([]); // satte for history (array).
+  // sets display components
   const [showMenu, setShowMenu] = useState(true);
   const [showUsers, setShowUsers] = useState(false);
   const [showAccounts, setShowAccounts] = useState(false);
@@ -62,29 +62,29 @@ function App() {
   const [isUserSelected, setIsUserSelected] = useState(false);
 
   const handleSelectUser = (user) => {
-    setSelectedUser(user);
-    setIsUserSelected(true);
+    setSelectedUser(user); // set the selected user
+    setIsUserSelected(true); // mark as selected
   };
 
-  const handleDeposit = (amount) => {
-    setUsers((prevUsers) => {
-      return prevUsers.map((user) => {
-        if (user.email === selectedUser.email) {
-          const updatedUser = { ...user, balance: user.balance + amount };
-          setSelectedUser(updatedUser);
+  const handleDeposit = (amount) => { // deposit function
+    setUsers((prevUsers) => { // updates users array prevUsers = previous state of array (before deposit)
+      return prevUsers.map((user) => { // goes through every objects in users array creating copy of array
+        if (user.email === selectedUser.email) { //user = every object in users array / checks if email of users is === to selected user
+          const updatedUser = { ...user, balance: user.balance + amount }; // copy everything but add amount to balance
+          setSelectedUser(updatedUser); // update selectedUser state with the new value
 
-          setTransactionHistory((prevHistory) => [
-            ...prevHistory,
+          setTransactionHistory((prevHistory) => [ // create entry to transactionHistory array
+            ...prevHistory, // 
             {
               user: `${user["First Name"]} ${user["Last Name"]}`,
               activity: "Deposit",
               amount,
-              date: new Date().toLocaleString(),
+              date: new Date().toLocaleString(), // current date and time when deposit occurred converted to string
             },
           ]);
-          return updatedUser;
+          return updatedUser; // returns updatedUser object  so it can replace the old user with new array created by .map()
         }
-        return user;
+        return user; // if user is not the selectedUser, return unchanged 
       });
     });
   };
@@ -195,18 +195,19 @@ function App() {
     });
 };
 
-  const onDepositToUser = (email, amount) => {
-    setUsers((prevUsers) => {
-      return prevUsers.map((user) => {
-        if (user.email === email) {
-          const updatedUser = { ...user, balance: user.balance + amount };
-          return updatedUser;
-        }
-        return user;
-      });
-    });
-  };
+  // const onDepositToUser = (email, amount) => {
+  //   setUsers((prevUsers) => {
+  //     return prevUsers.map((user) => {
+  //       if (user.email === email) {
+  //         const updatedUser = { ...user, balance: user.balance + amount };
+  //         return updatedUser;
+  //       }
+  //       return user;
+  //     });
+  //   });
+  // };
 
+  // visibiility toggle of components
   const handleMenuShow = () => {
     setShowUsers(false);
     setShowAccounts(false);
@@ -263,14 +264,13 @@ return (
         </div>
       ) : (
         <>
-        {console.log('Selected User:', selectedUser)}
           <div id="upper-wrapper">
             {selectedUser && (
               <Details
                 user={selectedUser}
                 onDeposit={handleDeposit}
                 onWithdrawal={handleWithdrawal}
-                onDepositToUser={onDepositToUser}
+                // onDepositToUser={onDepositToUser}
                 users={users}
                 isUserSelected={isUserSelected}
                 onLogout={handleLogout}
