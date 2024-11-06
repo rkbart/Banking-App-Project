@@ -179,7 +179,7 @@ const handleDeleteExpense = (index) => {
 
             <div className="budget-display-container">
                 <span><img className='closeIconBudget' src ={closeIcon} onClick={onClose}/></span>
-                
+    
                     
                 <p className="budget-header"> Budget Tracker </p>
              

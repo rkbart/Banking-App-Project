@@ -5,10 +5,10 @@ h2 {
 
 #user-info {
     position: relative;
-    background-color: var(--purple);
+    background: radial-gradient(circle, rgba(50,27,779,1) 0%, rgba(58,16,120,1) 0%);
     padding: 1rem;
     border-radius: 15px;
-    color: whitesmoke;
+    color: var(--white);
     width: 45vw;
     height: 210px;
 }

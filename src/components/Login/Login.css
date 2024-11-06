@@ -61,7 +61,6 @@ form{
 }
 
 .login_form .login_option .option a:hover {
-    background: rgb(78,49,170);
     background: radial-gradient(circle, rgba(78,49,170,1) 0%, rgba(58,16,120,1) 0%);
     border-color: #626cd6;
 }
@@ -83,7 +82,7 @@ form{
 
 /* Login option separator styling */
 .login_form .separator span {
-    background: var(--eerie_black_light);
+    background: var(--eerie_black_dark);
     z-index: 1;
     padding: 0 10px;
     position: relative;
@@ -138,7 +137,7 @@ form .input_box {
 
 a {
     text-decoration: none;
-    color: var(--purple);
+    color: var(--pink);
     font-weight: 500;
 }
 
@@ -157,7 +156,7 @@ form button {
     border-radius: 15px;
     border: none;
     outline: none;
-    background-color: var(--eerie_black_dark);
+    background-color: var(--purple);
     color: #fff;
     font-size: 18px;
     font-weight: 500;
@@ -168,6 +167,6 @@ form button {
 }
 
 form button:hover {
-    background: rgb(78,49,170);
+    background: var(--pink);
     background: radial-gradient(circle, rgba(78,49,170,1) 0%, rgba(58,16,120,1) 0%);
 } 
