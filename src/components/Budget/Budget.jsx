@@ -162,7 +162,7 @@ const handleDeleteExpense = (index) => {
     const expenseAmount = expenses[index].amount;
 
     // Remove the expense from the list
-    const updatedExpenses = expenses.filter((_, i) => i !== index);
+    const updatedExpenses = expenses.filter((item, i) => i !== index);
     setExpenses(updatedExpenses);
 
     // Update total expenses and remaining budget

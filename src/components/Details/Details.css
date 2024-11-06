@@ -5,7 +5,8 @@ h2 {
 
 #user-info {
     position: relative;
-    background-color: var(--eerie_black_light);
+    background: rgb(78,49,170);
+    background: radial-gradient(circle, rgba(78,49,170,1) 0%, rgba(58,16,120,1) 0%);
     padding: 1rem;
     border-radius: 15px;
     color: whitesmoke;
@@ -55,8 +56,7 @@ h2 {
     gap: 5px;
     width: fit-content;
     padding: 5px 15px;
-    background: rgb(78,49,170);
-    background: radial-gradient(circle, rgba(78,49,170,1) 0%, rgba(58,16,120,1) 0%);
+    background-color: var(--eerie_black_light);
     color: var(--white);
     border-radius: 10px;
     height: 35px;

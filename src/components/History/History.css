@@ -30,13 +30,14 @@ th, td {
     padding: 8px;
     text-align: center;
     border-bottom: 1px solid #DDD;
+    color:var(--white);
 }
 #col-amount {
     text-align: left;
 }
-tr:nth-child(even) {
-    background-color: #D6EEEE;
-}
+/* tr:nth-child(even) {
+    background-color: var(--eerie_black_dark);
+} */
 tr:hover {
     background-color: var(--eerie_black_dark);
 }
