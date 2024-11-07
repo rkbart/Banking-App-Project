@@ -2,11 +2,10 @@ import './Accounts.css';
 import closeAccountsBtn from "../../assets/close.svg"
 import userImg from "../../assets/user.svg"
 // import { useState } from 'react';
-
+import { IoPersonCircleSharp } from "react-icons/io5";
 
 // recieves users(Array) at data(json) as props.. declared in App.js                
 function Accounts({ users, onSelectUser, onClose }) { // 
-    
     const formatBalance = (amount) => {
         return amount.toLocaleString('en-US', {
         style: 'decimal',
@@ -32,7 +31,7 @@ function Accounts({ users, onSelectUser, onClose }) { //
             <ul id="userlist">
                 {users.map((user, index) => (
                     <div key={index} className="user-entry" onClick={() => handleUserClick(user)}>
-                        <img src={userImg} className="avatar" alt="User Avatar" />
+                        <IoPersonCircleSharp className="avatar" alt="User Avatar" />
                         <li className="user-name">{`${user["First Name"]} ${user["Last Name"]} has PHP ${formatBalance(user.balance)} `}</li>
             </div>
                 ))}

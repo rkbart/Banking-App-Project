@@ -16,9 +16,9 @@
     height: 100%; /* Allow height to adjust to content */
 }
 
-#send-money, #manage-accounts, #add-user, #budget, #buy-load, #pay-bills {
+#send-money, #manage-accounts, #add-user, #budget, #buy-load, #pay-bills, #logout {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     cursor: pointer;
