@@ -7,6 +7,7 @@ function BuyLoad({ onClose, onBuyLoad, user }) {
     const [mobileNumber, setMobileNumber] = useState(''); 
     const [loadAmount, setLoadAmount] = useState(''); 
     const [selectedTelco, setSelectedTelco] = useState(''); 
+    const [errorVisible, setErrorVisible] = useState(false);
 
     const telcoNumbers = {
         Globe: '+63 917 666 0232',
@@ -24,7 +25,7 @@ function BuyLoad({ onClose, onBuyLoad, user }) {
     const handleBuyLoad = () => {
         const amount = parseFloat(loadAmount);
         if (isNaN(amount) || amount <= 0) {
-            alert('Please enter a valid payment amount.');
+            setErrorVisible(true);
             return;
         }
 
@@ -66,7 +67,7 @@ function BuyLoad({ onClose, onBuyLoad, user }) {
                     placeholder="(input mobile number)"
                     required
                 />
-
+                {errorVisible &&(<div className="errorMessageBuyLoad">Please fill in all fields.</div>)}
                 <div className="payLoad">
                     <p>Amount</p>
                     <input

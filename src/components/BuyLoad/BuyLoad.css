@@ -12,7 +12,7 @@
 }
 
 .buyLoad-header {
-    font-size: 1.5em;
+    font-size: 1.2em;
     display: inline;
 }
 
@@ -35,6 +35,7 @@
     border-radius: 10px;
     background-color: var(--eerie_black_dark);
     color: var(--white);
+    margin-top: 5px;
 }
 
 #amountLoad{
@@ -45,7 +46,11 @@
 .telco-option-css, #buyLoadFor {
     width: 70%;
 }
-
+.errorMessageBuyLoad{
+    color: var(--red);
+    font-size: 12px;
+    margin-top: 5px;
+}
 .payLoad {
     display: flex;
     justify-content: center;
@@ -54,7 +59,7 @@
     background-color: var(--purple);
     border-radius: 15px;
     color: whitesmoke;
-    margin-top: 18px;
+    margin-top: 4px;
     height: 40px;
 }
 
@@ -67,5 +72,5 @@
 .buyLoadForText, .selectTelcoText {
     padding-left: 18px;
     text-align: left;
-
+    margin-bottom: 3px;
 }
