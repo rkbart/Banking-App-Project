@@ -25,6 +25,9 @@ function Menu({ onAddUser, onManageAccounts, onPayBills, onBudget, onBuyLoad, on
     const handleBuyLoadClick = () => {
         onBuyLoad(); // Call the function to show Accounts component
     };
+    const handleLogOut = () => {
+        onLogout();
+    }
 
     return (
         <div id="menu">
@@ -44,14 +47,17 @@ function Menu({ onAddUser, onManageAccounts, onPayBills, onBudget, onBuyLoad, on
                 <img src={buyLoadImg} alt="buy load" />
                 <p>Buy Load</p> 
             </div>
+            <div id = "logout" onClick={onLogout}> 
+                <img src={depositImg} alt="logout" /> 
+                <p>Log out</p>
+            </div>
             {/* <div id="pay-bills" onClick={handlePayBillsClick}>
                 <img src={payBillsImg} alt="pay-bills"/>
                 <p>Pay Bills</p> 
             </div> */}
             <div>
-                <span id="logout" onClick={onLogout}> 
-                    <img src={depositImg} alt="logout" /> Log out
-                </span>
+                
+                
             </div>
         </div>
     )
