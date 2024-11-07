@@ -6,12 +6,10 @@ import buyLoadImg from '../../assets/buy-load.svg'
 import payBillsImg from '../../assets/pay-bills.svg'
 import depositImg from "../../assets/deposit.svg";
 
-function Menu({ onAddUser, onManageAccounts, onPayBills, onBudget, onBuyLoad, onLogout, hideComponents}) {
+function Menu({ onAddUser, onManageAccounts, onPayBills, onBudget, onBuyLoad, onLogout}) {
         
     const handleAddUserClick = () => {
-        if (hideComponents) {
-            hideComponents();  // Hide components correctly
-        }
+        
         onAddUser(); // Call the function to show Users component
     };
 

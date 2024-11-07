@@ -55,7 +55,7 @@ function App() {
   const [transactionHistory, setTransactionHistory] = useState([]);
   const [showMenu, setShowMenu] = useState(true);
   const [showUsers, setShowUsers] = useState(false);
-  const [showAccounts, setShowAccounts] = useState(false);
+  const [showAccounts, setShowAccounts] = useState(true);
   const [showPayBills, setPayBills] = useState(false);
   const [showBuyLoad, setBuyLoad] = useState(false);
   const [showBudget, setBudget] = useState(false);
@@ -209,7 +209,8 @@ function App() {
 
   const handleMenuShow = () => {
     setShowUsers(false);
-    setShowAccounts(false);
+    setShowAccounts(true);
+    setShowHistory(true)
     setPayBills(false);
     setBuyLoad(false);
     setBudget(false);
@@ -217,16 +218,9 @@ function App() {
 
   const [showHistory, setShowHistory] = useState(true);
 
-  // const setShowHistory = () => {
-
-  // }
-  const handleHideComponent = () => {
-    setShowAccounts(false);
-    setShowHistory(false);
-  };
-
   const handleAddUser = () => {
     setShowUsers(true);
+    setShowHistory(false);
     setShowAccounts(false);
     setPayBills(false);
     setBuyLoad(false);
@@ -283,7 +277,6 @@ return (
                   onBuyLoad={handleBuyLoad}
                   onBudget={handleBudget}
                   onLogout={handleLogout}
-                  hideComponents={handleHideComponent}
                 />
               )}
           </div>
@@ -295,9 +288,10 @@ return (
                                onClose={handleMenuShow}
                         />
                       )}   
-              <History transactionHistory={transactionHistory} 
-              />
-              
+              {showHistory && (
+                <History transactionHistory={transactionHistory}
+                />
+              )} 
               {showBuyLoad && (
                 <BuyLoad onClose={handleMenuShow} 
                          onBuyLoad={handleAutoLoad} 
