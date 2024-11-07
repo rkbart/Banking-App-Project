@@ -52,7 +52,7 @@ h2 {
 }
 
 /* buttons */
-#deposit, #withdraw, #transfer, #logout {
+#deposit, #withdraw, #transfer {
     display: flex;
     align-items: center;
     justify-content: center;

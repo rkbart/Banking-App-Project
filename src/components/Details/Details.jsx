@@ -145,7 +145,7 @@ const handleSubmit = (event) => {
                                 onChange={handleTransferUserChange} 
                                 value={selectedTransferUser ? selectedTransferUser.email : ''}
                             >   
-                                <option selected disabled> -- Select account</option>
+                                {/* <option value="" disabled selected>-- Select account --</option> */}
                                 {users.map((user) => (
                                     <option 
                                         key={user.email} 
