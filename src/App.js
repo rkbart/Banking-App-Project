@@ -292,12 +292,12 @@ return (
                          user={selectedUser}  
                 />
               )}
-              {/* {showAccounts && ( */}
+              {showAccounts && (
                 <Accounts users={users} 
                           onSelectUser={handleSelectUser} 
                           onClose={handleMenuShow} 
                 />
-              {/* )} */}
+              )}
            </div>
 
           <div id = "user-card-wrapper">
