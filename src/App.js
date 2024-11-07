@@ -56,10 +56,11 @@ function App() {
   const [showMenu, setShowMenu] = useState(true);
   const [showUsers, setShowUsers] = useState(false);
   const [showAccounts, setShowAccounts] = useState(true);
-  const [showPayBills, setPayBills] = useState(false);
+  const [showPayBills, setPayBills] = useState(true);
   const [showBuyLoad, setBuyLoad] = useState(false);
   const [showBudget, setBudget] = useState(false);
   const [isUserSelected, setIsUserSelected] = useState(false);
+  const [showDetails, setShowDetails] = useState(true);
 
   const handleSelectUser = (user) => {
     setSelectedUser(user);
@@ -214,7 +215,8 @@ function App() {
     setShowUsers(false);
     setShowAccounts(true);
     setShowHistory(true)
-    setPayBills(false);
+    setPayBills(true);
+    setShowDetails(true);
     setBuyLoad(false);
     setBudget(false);
   };
@@ -258,7 +260,10 @@ function App() {
     setShowUsers(false);
     setBuyLoad(false);
     setBudget(true);
+    setShowHistory(false);
+    setShowDetails(false)
   };
+
 
   
 return (
@@ -280,6 +285,7 @@ return (
                   onBuyLoad={handleBuyLoad}
                   onBudget={handleBudget}
                   onLogout={handleLogout}
+                  
                 />
               )}
           </div>
@@ -310,7 +316,7 @@ return (
            </div>
 
           <div id = "user-card-wrapper">
-              {selectedUser && (
+              {showDetails && selectedUser && (
                   <Details
                     user={selectedUser}
                     onDeposit={handleDeposit}
@@ -322,12 +328,12 @@ return (
                     onSubmitTransfer={handleTransfer}
                   />
                 )}
-                {/* {showPayBills && ( */}
+                {showPayBills && (
                 <PayBills onClose={handleMenuShow} 
                           onPayBill={handleBillsPayment} 
                           user={selectedUser} 
                           isUserSelected={isUserSelected} />
-              {/* )} */}
+                )}
                
            </div>   
               {showBudget && (
