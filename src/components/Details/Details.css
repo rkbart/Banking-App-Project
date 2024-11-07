@@ -1,5 +1,5 @@
 h2 {
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     color:var(--white);
 }
 
@@ -14,38 +14,38 @@ h2 {
     width: 38vw;
     height: 210px;
     position: relative;
-    margin-top: 10px;
+    margin-top: 0.5rem;
 }
 
 #user-info > p {
     text-align: left;
     margin-bottom: 0.25rem;
-    margin-top: 1rem;
+    margin-top: 1.5rem;
 }
 
-#email-holder {
+/* #email-holder {
     font-size: 1rem;
     margin-bottom: 1rem;
-}
+} */
 
-#balance {
+/* #balance {
   margin-left: 0.5rem;
   font-size: 1.5rem;
   margin-bottom: 1rem;
-}
+} */
 
 #hide {
     vertical-align: middle;
-    margin-left: 5px;
+    margin-left: 0.5rem;
     cursor: pointer;
 }
 
 /* buttons container */
 #depo-with {
-    position: absolute;
+    /* position: absolute; */
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: space-evenly;
     gap: 1rem;
     /* bottom: 2px; */
     margin-top: 1rem;
@@ -147,3 +147,6 @@ input[type=number]::-webkit-outer-spin-button {
     width: 50%;
 }
 
+#transfer-user {
+    
+}

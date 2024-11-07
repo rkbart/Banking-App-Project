@@ -105,20 +105,23 @@ const handleSubmit = (event) => {
             <h2 id="user">{`${user["First Name"]} ${user["Last Name"]}`}</h2>
             <span id="email-holder">{user.email}</span>
             <p>Available Balance</p>
-            <span id="balance-holder">{isBalanceVisible ? `PHP ${formatBalance(user.balance)}` : 'PHP ************'}</span>
+            <span id="balance-holder">{isBalanceVisible ? `PHP ${formatBalance(user.balance)}` : 'PHP ***********'}</span>
             <span id="hide" onClick={handleEye}>
                 <img src={isBalanceVisible ? visibility : visibilityOff} alt="toggle visibility" />
             </span>
 
             <div id="depo-with">
                 <span id="deposit" onClick={() => handleActionClick('deposit')}>
-                    <img src={depositImg} alt="deposit"/> Deposit
+                    <img src={depositImg} 
+                         alt="deposit"/> Deposit
                 </span>
                 <span id="withdraw" onClick={() => handleActionClick('withdraw')}>
-                    <img src={depositImg} alt="withdraw"/> Withdraw
+                    <img src={depositImg} 
+                         alt="withdraw"/> Withdraw
                 </span>
                 <span id="transfer" onClick={() => handleActionClick('transfer')}>
-                    <img src={depositImg} alt="transfer"/> Transfer
+                    <img src={depositImg} 
+                         alt="transfer"/> Transfer
                 </span>
             </div>
 
@@ -136,7 +139,7 @@ const handleSubmit = (event) => {
                     />
                     {actionType === 'transfer' && (
                         <div>
-                            <label htmlFor="transfer-user">Transfer to:</label>
+                            <label htmlFor="transfer-user">Transfer to: </label>
                             <select 
                                 id="transfer-user" 
                                 onChange={handleTransferUserChange} 

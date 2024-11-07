@@ -11,19 +11,20 @@ import BuyLoad from './components/BuyLoad/BuyLoad.jsx'
 import Budget from './components/Budget/Budget.jsx';
 
 function App() {
-  const [loggedIn, setLoggedIn] = useState(false);  // staete whether user is logged in or not
+  const [loggedIn, setLoggedIn] = useState(false); 
 
   const handleLogin = () => {
-    setLoggedIn(true);  // set user as logged in when called
+    setLoggedIn(true); //
   };
 
-  const handleLogout = () => { // handle for logging out
+  const handleLogout = () => {
     alert("Logged out successfully!");
     setLoggedIn(false); 
-    window.location.reload(); // refresh page para ma reset
+    window.location.reload();
+   
   }
-  
-  const [users, setUsers] = useState([ // initialize array users[]
+
+  const [users, setUsers] = useState([
     {
       "First Name": "Ryan",
       "Last Name": "Bartolome",
@@ -44,15 +45,14 @@ function App() {
     }
   ]);
 
-  const [selectedUser, setSelectedUser] = useState({ // default user displayed in Details component
-    "First Name": "Welcome to",
-    "Last Name": "Kamote Bank",
-    email: "Where everyone is a kamote.",
+  const [selectedUser, setSelectedUser] = useState({
+    "First Name": "Welcome,",
+    "Last Name": "Kamote!",
+    email: "admin@kamotebanking.ph",
     balance: 0
   });
 
-  const [transactionHistory, setTransactionHistory] = useState([]); // satte for history (array).
-  // sets display components
+  const [transactionHistory, setTransactionHistory] = useState([]);
   const [showMenu, setShowMenu] = useState(true);
   const [showUsers, setShowUsers] = useState(false);
   const [showAccounts, setShowAccounts] = useState(false);
@@ -62,29 +62,29 @@ function App() {
   const [isUserSelected, setIsUserSelected] = useState(false);
 
   const handleSelectUser = (user) => {
-    setSelectedUser(user); // set the selected user
-    setIsUserSelected(true); // mark as selected
+    setSelectedUser(user);
+    setIsUserSelected(true);
   };
 
-  const handleDeposit = (amount) => { // deposit function
-    setUsers((prevUsers) => { // updates users array prevUsers = previous state of array (before deposit)
-      return prevUsers.map((user) => { // goes through every objects in users array creating copy of array
-        if (user.email === selectedUser.email) { //user = every object in users array / checks if email of users is === to selected user
-          const updatedUser = { ...user, balance: user.balance + amount }; // copy everything but add amount to balance
-          setSelectedUser(updatedUser); // update selectedUser state with the new value
+  const handleDeposit = (amount) => {
+    setUsers((prevUsers) => {
+      return prevUsers.map((user) => {
+        if (user.email === selectedUser.email) {
+          const updatedUser = { ...user, balance: user.balance + amount };
+          setSelectedUser(updatedUser);
 
-          setTransactionHistory((prevHistory) => [ // create entry to transactionHistory array
-            ...prevHistory, // 
+          setTransactionHistory((prevHistory) => [
+            ...prevHistory,
             {
               user: `${user["First Name"]} ${user["Last Name"]}`,
               activity: "Deposit",
               amount,
-              date: new Date().toLocaleString(), // current date and time when deposit occurred converted to string
+              date: new Date().toLocaleString(),
             },
           ]);
-          return updatedUser; // returns updatedUser object  so it can replace the old user with new array created by .map()
+          return updatedUser;
         }
-        return user; // if user is not the selectedUser, return unchanged 
+        return user;
       });
     });
   };
@@ -207,7 +207,6 @@ function App() {
   //   });
   // };
 
-  // visibiility toggle of components
   const handleMenuShow = () => {
     setShowUsers(false);
     setShowAccounts(false);
@@ -264,40 +263,68 @@ return (
       ) : (
         <>
         {console.log('Selected User:', selectedUser)}
-          <div id="upper-wrapper">
-            {selectedUser && (
-              <Details
-                user={selectedUser}
-                onDeposit={handleDeposit}
-                onWithdrawal={handleWithdrawal}
-                onDepositToUser={onDepositToUser}
-                users={users}
-                isUserSelected={isUserSelected}
-                onLogout={handleLogout}
-                onClose={handleMenuShow}
-                onSubmitTransfer={handleTransfer}
-              />
-            )}
 
+          <div id="menu-wrapper">
             {showMenu && (
-              <Menu
-                onAddUser={handleAddUser}
-                onManageAccounts={handleManageAccounts}
-                onPayBills={handlePayBills}
-                onBuyLoad={handleBuyLoad}
-                onBudget={handleBudget}
-              />
-            )}
-            {console.log('Transaction History:', transactionHistory)}
-            <History transactionHistory={transactionHistory} />
+                <Menu
+                  onAddUser={handleAddUser}
+                  onManageAccounts={handleManageAccounts}
+                  onPayBills={handlePayBills}
+                  onBuyLoad={handleBuyLoad}
+                  onBudget={handleBudget}
+                  onLogout={handleLogout}
+                />
+              )}
           </div>
 
-              {/* modals starts here */}
+           <div id = "history-wrapper">
+              {showUsers && (
+                        <Users users={users} 
+                               setUsers={setUsers} 
+                               onClose={handleMenuShow} 
+                        />
+                      )}   
+              <History transactionHistory={transactionHistory} />
+              
+              {showBuyLoad && (
+                <BuyLoad onClose={handleMenuShow} 
+                         onBuyLoad={handleAutoLoad} 
+                         user={selectedUser}  
+                />
+              )}
+              {/* {showAccounts && ( */}
+                <Accounts users={users} 
+                          onSelectUser={handleSelectUser} 
+                          onClose={handleMenuShow} 
+                />
+              {/* )} */}
+           </div>
 
+          <div id = "user-card-wrapper">
+              {selectedUser && (
+                  <Details
+                    user={selectedUser}
+                    onDeposit={handleDeposit}
+                    onWithdrawal={handleWithdrawal}
+                    // onDepositToUser={onDepositToUser}
+                    users={users}
+                    isUserSelected={isUserSelected}
+                    onClose={handleMenuShow}
+                    onSubmitTransfer={handleTransfer}
+                  />
+                )}
+                {/* {showPayBills && ( */}
+                <PayBills onClose={handleMenuShow} 
+                          onPayBill={handleBillsPayment} 
+                          user={selectedUser} 
+                          isUserSelected={isUserSelected} />
+              {/* )} */}
+               
+           </div>   
               {showBudget && (
-                <Budget onClose={handleMenuShow} onBudget={handleBudget}  />
+                <Budget onClose={handleMenuShow} 
+                        onBudget={handleBudget}  />
               )} 
-              {/* test commit */}
         </>
       )}
     
