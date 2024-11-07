@@ -74,6 +74,12 @@ const chartOptions = {
     },
 };
 
+const handleKeyDown = (e) => {
+    if (['-', 'e', '+'].includes(e.key)) {
+      e.preventDefault();
+    }
+  };
+
     const handleBudgetInput = (e) => {
         const value = e.target.value;
         const validDecimalPattern = /^\d*\.?\d{0,2}$/;
@@ -82,11 +88,7 @@ const chartOptions = {
         }
       };
 
-      const handleBudgetKeyDown = (e) => {
-        if (['-', 'e', '+'].includes(e.key)) {
-          e.preventDefault();
-        }
-      };
+      
 
       const [displayBudget, setDisplayBudget] = useState(0);
 
@@ -123,14 +125,11 @@ const chartOptions = {
       
       // Save expense and update the total expenses
 
-      const handleSaveExpense = () => {
-        setErrorVisible(true); // Show error if any field is empty  
-     // Ensure all required fields are filled     
-       if (saveDisabled) {
+const handleSaveExpense = () => {
+    if (saveDisabled) {
         setErrorVisible(true); // Show error if fields are empty
         return;
     } 
-
     const expenseValue = parseFloat(expenseAmount);
 
     // Proceed if fields are filled
@@ -144,7 +143,6 @@ const chartOptions = {
             setRemainingBudget(displayBudget - newTotal); // Update remaining budget
             return newTotal;
         });
-
         // Clear inputs after successful save
         setExpenseAmount(''); 
         setExpenseCategory('');
@@ -219,7 +217,7 @@ const handleDeleteExpense = (index) => {
                                 step="0.01"
                                 id="budgetInput"
                                 onChange={handleBudgetInput}
-                                onKeyDown={handleBudgetKeyDown}
+                                onKeyDown={handleKeyDown}
                                 required
                             />
                         </div>
@@ -244,6 +242,7 @@ const handleDeleteExpense = (index) => {
                     id="expense-amount"
                     value = {expenseAmount}
                     onChange= {handleExpenseAmount} 
+                    onKeyDown={handleKeyDown}
                     required />
                     <br />
                     Expense category:*
