@@ -79,7 +79,7 @@ h2 {
     gap: 1rem;
     background-color: var(--eerie_black_light);
     padding: 2rem;
-    color: #707070;
+    color: whitesmoke;
     border-radius: 15px;
     height: 300px;
     box-shadow: 1px 1px 5px #707070;
@@ -139,14 +139,23 @@ input[type=number]::-webkit-outer-spin-button {
     width: 1rem;
 }
 
-#transfer-from-balance {
-    height: auto;
-    font-size: 1.5rem;
-    color:#707070;
-    padding-left: 0.5rem;
-    width: 50%;
+#transfer-user {
+    background: rgb(80,39,121);
+    color: whitesmoke;
+    margin-left: 5px;
+    padding: 8px;
+    width: 200px;
+    border: none;
+    font-size: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+    outline: none;
+    cursor: pointer;
 }
 
-#transfer-user {
-    
+option {
+    background-color: var(--eerie_black_light);
 }
+
+
+

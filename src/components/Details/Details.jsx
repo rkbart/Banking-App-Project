@@ -144,13 +144,13 @@ const handleSubmit = (event) => {
                                 id="transfer-user" 
                                 onChange={handleTransferUserChange} 
                                 value={selectedTransferUser ? selectedTransferUser.email : ''}
-                            >
+                            >   
+                                <option selected disabled> -- Select account</option>
                                 {users.map((user) => (
                                     <option 
                                         key={user.email} 
                                         value={user.email}
-                                    >
-                                        {`${user["First Name"]} ${user["Last Name"]}`}
+                                    > {`${user["First Name"]} ${user["Last Name"]}`}
                                     </option>
                                 ))}
                             </select>
