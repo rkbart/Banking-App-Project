@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './Details.css';
 import visibility from "../../assets/visibility.svg";
 import visibilityOff from "../../assets/visibility-off.svg";
@@ -7,7 +7,12 @@ import closeImg from "../../assets/close.svg";
 
 
 function Details({user, users, onDeposit, onWithdrawal, isUserSelected, onSubmitTransfer}) {
-    
+    useEffect(() => {
+        // This effect runs whenever the 'user' prop changes
+        setSelectedTransferUser(users.find(u => u.email === user.email));
+    }, [user, users]); // When user or users change, update selectedTransferUser
+
+
     const [showInput, setShowInput] = useState(false);
     const [inputAmount, setInputAmount] = useState('');
     const [actionType, setActionType] = useState(''); // deposit, withdraw, transfer

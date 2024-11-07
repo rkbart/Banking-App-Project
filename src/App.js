@@ -136,7 +136,6 @@ function App() {
   };
 
   const handleTransfer = (amount, selectedTransferUser) => {
-    
     setUsers((prevUsers) => {
       let updatedSender = null;
       let updatedRecipient = null;
@@ -167,9 +166,13 @@ function App() {
   
       return newUsers;  // return updated users array with both sender and recipient updated
     });
-  
+    
+    const updatedSelectedUser = { ...selectedUser, balance: selectedUser.balance - amount };
+    setSelectedUser(updatedSelectedUser);
+    
     handleMenuShow();
   };
+  
   
   const handleAutoLoad = (amount) => {
     setUsers((prevUsers) => {
@@ -195,17 +198,17 @@ function App() {
     });
 };
 
-  // const onDepositToUser = (email, amount) => {
-  //   setUsers((prevUsers) => {
-  //     return prevUsers.map((user) => {
-  //       if (user.email === email) {
-  //         const updatedUser = { ...user, balance: user.balance + amount };
-  //         return updatedUser;
-  //       }
-  //       return user;
-  //     });
-  //   });
-  // };
+  const onDepositToUser = (email, amount) => {
+    setUsers((prevUsers) => {
+      return prevUsers.map((user) => {
+        if (user.email === email) {
+          const updatedUser = { ...user, balance: user.balance + amount };
+          return updatedUser;
+        }
+        return user;
+      });
+    });
+  };
 
   const handleMenuShow = () => {
     setShowUsers(false);
@@ -312,7 +315,7 @@ return (
                     user={selectedUser}
                     onDeposit={handleDeposit}
                     onWithdrawal={handleWithdrawal}
-                    // onDepositToUser={onDepositToUser}
+                    onDepositToUser={onDepositToUser}
                     users={users}
                     isUserSelected={isUserSelected}
                     onClose={handleMenuShow}
