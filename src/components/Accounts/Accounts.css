@@ -5,42 +5,52 @@
     background-color: var(--eerie_black_light);
     border-radius: 15px;
     padding: 2rem; /* Adjust as necessary */
+    padding-top: 1rem;
     z-index: 1; /* Ensure it stacks above the background */
     margin-top: 1rem;
 }
 
 #userlist {
     color: var(--white);
-    font-size: 20px;
+    font-size: 16px;
     margin-top: 1rem;
-    overflow-y: auto; 
-    max-height: 125px; 
+    overflow-y: auto;
+    max-height: 150px;
+    max-width: 45vw; 
     background-color:  var(--eerie_black_light);
     display: flex;
+    flex-wrap: wrap;
     justify-content: flex-start;
-    align-items: flex-start;
-    flex-direction: column;
+    align-items: center;
+    /* flex-direction: column; */
 }
 
 .user-entry {
     display: flex; 
+    flex-direction: column;
+    justify-content: space-evenly;
     align-items: center; 
-    margin: 0; 
+    margin: 30px;
+    margin-top: 0; 
+    width: 70px;
+    padding: 5px;
+    cursor: pointer;
 }
 
 .avatar {
-    width: 32px;
-    height: 32px; 
+    width: 60px;
+    height: 60px; 
     margin-right: 10px;
+    margin-bottom: 5px;
 }
 
 .user-name {
     list-style-type: none; 
-    cursor: pointer;
+    /* cursor: pointer; */
 }
 
-#close-accts-button {
+/* #close-accts-button {
     float: inline-end;
     cursor: pointer; 
     width: 1rem;
-}
+} */

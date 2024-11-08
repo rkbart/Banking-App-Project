@@ -42,6 +42,12 @@ function App() {
       "Last Name": "Bartolome",
       "email": "pepperthed@gmail.com",
       "balance": 200000
+    },
+    {
+      "First Name": "Yuna",
+      "Last Name": "Shih",
+      "email": "yunatheshih@gmail.com",
+      "balance": 45500
     }
   ]);
 
