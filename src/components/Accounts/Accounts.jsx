@@ -22,7 +22,7 @@ function Accounts({users, onSelectUser}) {
         <div id="accounts-container">
             <h2>Select a Kamote Account</h2>
             <ul id="userlist">
-                {users.map((user, index) => (
+                {users.slice().reverse().map((user, index) => (
                     <div key={index} 
                          className="user-entry" 
                          onClick={() => handleUserClick(user)}

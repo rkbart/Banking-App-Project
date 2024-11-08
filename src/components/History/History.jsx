@@ -24,7 +24,7 @@ function History({ transactionHistory }) {
                     </thead>
                     <tbody>
                         {transactionHistory.length > 0 ? (
-                            transactionHistory.map((transaction, index) => {
+                            transactionHistory.slice().reverse().map((transaction, index) => {
                                 // Determine the CSS class based on activity type
                                 let amountClass = '';
                                 if (transaction.activity === 'Deposit') {
