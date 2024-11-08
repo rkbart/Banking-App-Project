@@ -75,6 +75,7 @@ const chartOptions = {
     },
 };
 
+
 const handleKeyDown = (e) => {
     if (['-', 'e', '+'].includes(e.key)) {
       e.preventDefault();
@@ -89,7 +90,6 @@ const handleKeyDown = (e) => {
         }
       };
 
-      
 
       const [displayBudget, setDisplayBudget] = useState(0);
 
@@ -149,7 +149,6 @@ const handleSaveExpense = () => {
         setExpenseCategory('');
         setErrorVisible(false); // Hide error after successful save
         hideAddExpense();
-        console.log(updatedExpenses);
     }
     setGraphVisible(true)
         }
@@ -171,6 +170,10 @@ const handleDeleteExpense = (index) => {
         setRemainingBudget(displayBudget - newTotal); // Update remaining budget
         return newTotal;
     });
+
+    if(updatedExpenses.length === 0){
+        setGraphVisible(false);
+    }
 };
 
     return (
@@ -193,11 +196,11 @@ const handleDeleteExpense = (index) => {
                             onClick={displayBudgetModal}
                         />
                     </p>
-                    <p className="budget-initial">Total Budget</p>
+                    <p className="totalBudgetHeader">Total Budget</p>
                     <p className="expenses-amount">P{formatBalance(totalExpenses)}</p>
-                    <p className="expenses-total">Total Expenses</p>
+                    <p className="totalExpensesHeader">Total Expenses</p>
                     <p className={`remaining-amount ${remainingBudget < 0 ? 'negative-amount' : ''}`}>P{formatBalance(remainingBudget)}</p>
-                    <p className="remaining-total">Total Remaining</p>
+                    <p className="totalRemainingHeader">Total Remaining</p>
                 </div>
             </div>
 
@@ -306,12 +309,14 @@ const handleDeleteExpense = (index) => {
                 
                 <button className="addBtn" onClick={displayAddExpense}>Add Expense</button>
             </div>
-            
+
             {
         graphVisible && 
                 <div id="graph">
                     <p id = "yourKamoteBudget">Your Kamote Budget <img src = {sweetPotato} id = "sweetPotatoIcon"/> </p>
-                    <Pie data={generateChartData()} options={chartOptions}/>
+                    <Pie 
+                    data={generateChartData()} options={chartOptions}
+                    />
                 </div>
         }
         </div>

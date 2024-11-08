@@ -28,8 +28,12 @@ function History({ transactionHistory }) {
                                 // Determine the CSS class based on activity type
                                 let amountClass = '';
                                 if (transaction.activity === 'Deposit') {
-                                    amountClass = 'deposit-amount'; // Green for deposits
-                                } else if (transaction.activity === 'Withdrawal' || transaction.activity === 'Transfer' || transaction.activity === 'Pay Bills' || transaction.activity === 'Buy Load') {
+                                    amountClass = 'deposit-amount'; // Green for deposit
+                                } else if (transaction.activity === 'Withdrawal' || 
+                                           transaction.activity === 'Transfer' || 
+                                        // transaction.activity === 'Pay Bills' || 
+                                           transaction.activity.includes('Pay Bills') || 
+                                           transaction.activity === 'Buy Load') {
                                     amountClass = 'expense-amount'; // Red for withdrawals, transfers, etc.
                                 }
 

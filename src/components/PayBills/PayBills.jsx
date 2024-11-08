@@ -8,7 +8,7 @@ import cardsImg from '../../assets/credit-cards.svg'
 import othersImg from '../../assets/others.svg'
 import payImg from '../../assets/pay-white.svg'
 import closeImg from '../../assets/close-white.svg'
-import closeGrayImg from '../../assets/close.svg'
+// import closeGrayImg from '../../assets/close.svg'
 
 function PayBills({onClose, onPayBill, user}) {
 
@@ -24,9 +24,9 @@ function PayBills({onClose, onPayBill, user}) {
         setPaymentAmount('');
     };
     
-    function handleCloseClick() {
-        onClose();    
-     }
+    // function handleCloseClick() {
+    //     onClose();    
+    //  }
 
      const handlePayBill = () => {
         const amount = parseFloat(paymentAmount);
