@@ -4,7 +4,7 @@
     justify-content: center;
     flex-direction: column; /* Ensure vertical stacking */
     align-items: center;
-    height: auto; /* Set to auto to allow for dynamic content height */
+    height: 93vh; /* Set to auto to allow for dynamic content height */
     width: 45vw; 
     background-color: var(--eerie_black_light);
     border-radius: 15px;
@@ -35,7 +35,7 @@ input[type=number]::-webkit-outer-spin-button {
 
 #submit {
     background: rgb(78,49,170);
-    background: radial-gradient(circle, rgba(78,49,170,1) 0%, rgba(58,16,120,1) 0%);
+    /* background: radial-gradient(circle, rgba(78,49,170,1) 0%, rgba(58,16,120,1) 0%); */
     color: whitesmoke; 
     padding: 5px 15px; 
     border-radius: 5px; 
@@ -45,7 +45,7 @@ input[type=number]::-webkit-outer-spin-button {
     border: none; 
 }
  #cancel {
-    background-color: var(--eerie_black_dark);
+    background-color: rgb(78,49,170);
     color: var(--white); 
     padding: 5px 15px; 
     border-radius: 5px; 

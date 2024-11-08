@@ -1,6 +1,6 @@
 #accounts-container {
     text-align: center;
-    height: 39.5vh; 
+    height: 43.5vh; 
     width: 45vw; 
     background-color: var(--eerie_black_light);
     border-radius: 15px;
@@ -22,7 +22,6 @@
     flex-wrap: wrap;
     justify-content: flex-start;
     align-items: center;
-    /* flex-direction: column; */
 }
 
 .user-entry {
@@ -46,7 +45,7 @@
 
 .user-name {
     list-style-type: none; 
-    /* cursor: pointer; */
+    cursor: pointer;
 }
 
 /* #close-accts-button {
