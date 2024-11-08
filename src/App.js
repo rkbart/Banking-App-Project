@@ -145,16 +145,15 @@ function App() {
       const newUsers = prevUsers.map((user) => {
         if (user.email === selectedUser.email) {
           updatedSender = { ...user, balance: user.balance - amount };   // withdraw
-          return updatedSender;  // update sender
+          return updatedSender;  
         }
         if (user.email === selectedTransferUser.email) {
           updatedRecipient = { ...user, balance: user.balance + amount };  // depo
-          return updatedRecipient;  // update recipient
+          return updatedRecipient;  
         }
         return user;  // return other users unmodified
       });
   
-      // after both balances are updated, we log the transfer transaction
       setTransactionHistory((prevHistory) => [
         ...prevHistory,
         {
@@ -182,7 +181,6 @@ function App() {
           const updatedUser = { ...user, balance: user.balance - amount };
           setSelectedUser(updatedUser);
 
-          // Log the Buy Load activity in the transaction history
           setTransactionHistory((prevHistory) => [
             ...prevHistory,
             {
@@ -199,17 +197,17 @@ function App() {
     });
 };
 
-  const onDepositToUser = (email, amount) => {
-    setUsers((prevUsers) => {
-      return prevUsers.map((user) => {
-        if (user.email === email) {
-          const updatedUser = { ...user, balance: user.balance + amount };
-          return updatedUser;
-        }
-        return user;
-      });
-    });
-  };
+  // const onDepositToUser = (email, amount) => {
+  //   setUsers((prevUsers) => {
+  //     return prevUsers.map((user) => {
+  //       if (user.email === email) {
+  //         const updatedUser = { ...user, balance: user.balance + amount };
+  //         return updatedUser;
+  //       }
+  //       return user;
+  //     });
+  //   });
+  // };
 
   const handleMenuShow = () => {
     setShowUsers(false);
@@ -285,6 +283,7 @@ return (
                   onBuyLoad={handleBuyLoad}
                   onBudget={handleBudget}
                   onLogout={handleLogout}
+                  onClose={handleMenuShow}
                   
                 />
               )}
@@ -321,7 +320,7 @@ return (
                     user={selectedUser}
                     onDeposit={handleDeposit}
                     onWithdrawal={handleWithdrawal}
-                    onDepositToUser={onDepositToUser}
+                    // onDepositToUser={onDepositToUser}
                     users={users}
                     isUserSelected={isUserSelected}
                     onClose={handleMenuShow}

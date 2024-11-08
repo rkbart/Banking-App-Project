@@ -1,7 +1,7 @@
 #menu {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items: center;
     margin-top: 5px;
     margin-bottom: 5px;
@@ -16,7 +16,7 @@
     height: 100%; /* Allow height to adjust to content */
 }
 
-#send-money, #manage-accounts, #add-user, #budget, #buy-load, #pay-bills, #logout {
+#send-money, #manage-accounts, #add-user, #budget, #buy-load, #pay-bills, #logout, #dashboard {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -69,3 +69,7 @@ p{
     width: 1rem;
 }
 
+.dashboard {
+    size: 2rem;
+    color: #707070;
+}
