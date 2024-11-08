@@ -1,12 +1,13 @@
 import './Menu.css';
 import addAccountImg from '../../assets/add-account.svg'
-import manageAccountImg from '../../assets/manage-accounts.svg'
+// import manageAccountImg from '../../assets/manage-accounts.svg'
 import budgetImg from '../../assets/budget.svg'
 import buyLoadImg from '../../assets/buy-load.svg'
-import payBillsImg from '../../assets/pay-bills.svg'
+// import payBillsImg from '../../assets/pay-bills.svg'
 import depositImg from "../../assets/deposit.svg";
+import { MdOutlineDashboard } from "react-icons/md";
 
-function Menu({ onAddUser, onManageAccounts, onPayBills, onBudget, onBuyLoad, onLogout}) {
+function Menu({ onAddUser, onManageAccounts, onPayBills, onBudget, onBuyLoad, onLogout, onClose}) {
         
     const handleAddUserClick = () => {
         
@@ -29,9 +30,16 @@ function Menu({ onAddUser, onManageAccounts, onPayBills, onBudget, onBuyLoad, on
     const handleLogOut = () => {
         onLogout();
     }
-   
+    const handleDashboardClick = () => {
+        onClose();
+    }
+
     return (
         <div id="menu">
+            <div id="dashboard" onClick={handleDashboardClick}>
+                <MdOutlineDashboard className='dashboard' size={38}/>
+                <p>Dashboard</p>
+            </div>
             <div id="add-user" onClick={handleAddUserClick }>
                 <img src={addAccountImg} alt="add account"/>
                 <p>Add</p> 
