@@ -34,6 +34,11 @@ function BuyLoad({ onClose, onBuyLoad, user }) {
             return;
         }
 
+        if (!selectedTelco) {
+            alert('Please select a Telco provider.');
+            return;
+        }
+
         onBuyLoad(amount); 
         onClose(); 
     };

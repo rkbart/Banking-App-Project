@@ -65,6 +65,7 @@ function App() {
   const [showPayBills, setPayBills] = useState(true);
   const [showBuyLoad, setBuyLoad] = useState(false);
   const [showBudget, setBudget] = useState(false);
+  const [showHistory, setShowHistory] = useState(true);
   const [isUserSelected, setIsUserSelected] = useState(false);
   const [showDetails, setShowDetails] = useState(true);
 
@@ -170,7 +171,7 @@ function App() {
         },
       ]);
   
-      return newUsers;  // return updated users array with both sender and recipient updated
+      return newUsers;
     });
     
     const updatedSelectedUser = { ...selectedUser, balance: selectedUser.balance - amount };
@@ -203,18 +204,6 @@ function App() {
     });
 };
 
-  // const onDepositToUser = (email, amount) => {
-  //   setUsers((prevUsers) => {
-  //     return prevUsers.map((user) => {
-  //       if (user.email === email) {
-  //         const updatedUser = { ...user, balance: user.balance + amount };
-  //         return updatedUser;
-  //       }
-  //       return user;
-  //     });
-  //   });
-  // };
-
   const handleMenuShow = () => {
     setShowUsers(false);
     setShowAccounts(true);
@@ -224,8 +213,6 @@ function App() {
     setBuyLoad(false);
     setBudget(false);
   };
-
-  const [showHistory, setShowHistory] = useState(true);
 
   const handleAddUser = () => {
     setShowUsers(true);
@@ -278,8 +265,6 @@ return (
         </div>
       ) : (
         <>
-        {console.log('Selected User:', selectedUser)}
-
           <div id="menu-wrapper">
             {showMenu && (
                 <Menu
@@ -290,17 +275,15 @@ return (
                   onBudget={handleBudget}
                   onLogout={handleLogout}
                   onClose={handleMenuShow}
-                  
                 />
               )}
           </div>
-
-           <div id = "history-wrapper">
-              {showUsers && (
-                        <Users users={users} 
-                               setUsers={setUsers} 
-                               onClose={handleMenuShow}
-                        />
+          <div id = "history-wrapper">
+             {showUsers && (
+                <Users users={users} 
+                       setUsers={setUsers} 
+                       onClose={handleMenuShow}
+                />
                       )}   
               {showHistory && (
                 <History transactionHistory={transactionHistory}
@@ -319,35 +302,33 @@ return (
                 />
               )}
            </div>
-
           <div id = "user-card-wrapper">
-              {showDetails && selectedUser && (
-                  <Details
-                    user={selectedUser}
-                    onDeposit={handleDeposit}
-                    onWithdrawal={handleWithdrawal}
-                    // onDepositToUser={onDepositToUser}
-                    users={users}
-                    isUserSelected={isUserSelected}
-                    onClose={handleMenuShow}
-                    onSubmitTransfer={handleTransfer}
-                  />
-                )}
-                {showPayBills && (
-                <PayBills onClose={handleMenuShow} 
-                          onPayBill={handleBillsPayment} 
-                          user={selectedUser} 
-                          isUserSelected={isUserSelected} />
-                )}
-               
-           </div>   
-              {showBudget && (
-                <Budget onClose={handleMenuShow} 
-                        onBudget={handleBudget}  />
-              )} 
+            {showDetails && selectedUser && (
+              <Details
+                user={selectedUser}
+                onDeposit={handleDeposit}
+                onWithdrawal={handleWithdrawal}
+                users={users}
+                isUserSelected={isUserSelected}
+                onClose={handleMenuShow}
+                onSubmitTransfer={handleTransfer}
+              />
+              )}
+            {showPayBills && (
+              <PayBills onClose={handleMenuShow} 
+                onPayBill={handleBillsPayment} 
+                user={selectedUser} 
+                isUserSelected={isUserSelected} 
+              />
+            )}
+          </div>   
+          {showBudget && (
+            <Budget onClose={handleMenuShow} 
+                    onBudget={handleBudget}  
+            />
+          )} 
         </>
       )}
-    
     </div>
   );
 }
