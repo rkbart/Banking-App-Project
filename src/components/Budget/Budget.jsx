@@ -7,6 +7,7 @@ import othersIcon from '../../assets/others_Budget.svg'
 import deleteIcon from '../../assets/close.svg'
 import closeIcon from '../../assets/close.svg'
 import { Pie } from 'react-chartjs-2';
+import sweetPotato from '../../assets/sweet-potato.png'
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -22,7 +23,7 @@ function Budget({onClose, onBudget}) {
         setErrorVisible(false);
     }
     const [updateBudget, setUpdateBudget] = useState('');
-    const [graphVisible, setGraphVisible] = useState(true);
+    const [graphVisible, setGraphVisible] = useState(false);
     const generateChartData = () => {
         const categoryTotals = expenses.reduce((acc, expense) => {
             acc[expense.category] = (acc[expense.category] || 0) + expense.amount;
@@ -150,6 +151,7 @@ const handleSaveExpense = () => {
         hideAddExpense();
         console.log(updatedExpenses);
     }
+    setGraphVisible(true)
         }
     
 const [remainingBudget, setRemainingBudget] = useState(0); // State for remaining budget
@@ -175,10 +177,8 @@ const handleDeleteExpense = (index) => {
         <>
         <div className = "budgetWindow">
 
-            <div className="budget-display-container">
-                <span><img className='closeIconBudget' src ={closeIcon} onClick={onClose}/></span>
-                    
-                <p className="budget-header"> Budget Tracker </p>
+            <div className="budget-display-container">      
+                <p id="budgetTracker"> Budget Tracker </p>
              
                 <div className="budget-container">
                     <p className="budget-amount">
@@ -267,7 +267,7 @@ const handleDeleteExpense = (index) => {
             </div>)
             }
 
-     {/* List of Expenses  */}
+     {/* Expenses List:  */}
      <div className="expenses-notebook">
                 <p className="header-expenses-notebook">Expenses List:</p>
                 {expenses.length > 0 ? (
@@ -306,17 +306,19 @@ const handleDeleteExpense = (index) => {
                 
                 <button className="addBtn" onClick={displayAddExpense}>Add Expense</button>
             </div>
+            
+            {
+        graphVisible && 
+                <div id="graph">
+                    <p id = "yourKamoteBudget">Your Kamote Budget <img src = {sweetPotato} id = "sweetPotatoIcon"/> </p>
+                    <Pie data={generateChartData()} options={chartOptions}/>
+                </div>
+        }
         </div>
 
-        {graphVisible && 
-            
-            <div className="graph">
-                <div className="graph">
-                        <Pie data={generateChartData()} options={chartOptions}/>
-                </div>
-            </div>
-            
-            }
+        
+
+        
         </>
     );
 
