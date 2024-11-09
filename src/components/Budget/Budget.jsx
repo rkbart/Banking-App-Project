@@ -5,14 +5,13 @@ import foodIcon from '../../assets/lunch_dining_Budget.svg'
 import billsIcon from '../../assets/payments_Budget.svg'
 import othersIcon from '../../assets/others_Budget.svg'
 import deleteIcon from '../../assets/close.svg'
-import closeIcon from '../../assets/close.svg'
 import { Pie } from 'react-chartjs-2';
 import sweetPotato from '../../assets/sweet-potato.png'
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 
-function Budget({onClose, onBudget}) {
+function Budget() {
     const [budgetVisible, setBudgetVisible] = useState(false);
     const displayBudgetModal = () => setBudgetVisible(true);
     const hideBudgetModal = () => setBudgetVisible(false);
@@ -199,7 +198,7 @@ const handleDeleteExpense = (index) => {
                     <p className="totalBudgetHeader">Total Budget</p>
                     <p className="expenses-amount">P{formatBalance(totalExpenses)}</p>
                     <p className="totalExpensesHeader">Total Expenses</p>
-                    <p className={`remaining-amount ${remainingBudget < 0 ? 'negative-amount' : ''}`}>P{formatBalance(remainingBudget)}</p>
+                    <p className={`remaining-amount ${remainingBudget <= 0 ? 'negative-amount' : 'positive-amount'}`}>P{formatBalance(remainingBudget)}</p>
                     <p className="totalRemainingHeader">Total Remaining</p>
                 </div>
             </div>

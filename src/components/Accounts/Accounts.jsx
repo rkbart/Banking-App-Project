@@ -28,7 +28,7 @@ function Accounts({users, onSelectUser}) {
                          onClick={() => handleUserClick(user)}
                     >
                         <img
-                            src={userAvatars[index]} // Use the corresponding avatar URL for each user
+                            src={userAvatars.slice().reverse()[index]} // Use the corresponding avatar URL for each user
                             alt="User Avatar"
                             className="avatar"
                         />
