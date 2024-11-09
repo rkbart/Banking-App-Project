@@ -1,34 +1,30 @@
 import './Login.css';
 import google from "../../assets/google.png";
 import kamote from "../../assets/sweet-potato.png";
-import kamoteLoginImg from "../../assets/kamoteLogin-img.svg"
 import { useState } from 'react';
 
 function Login({ onLogin }) {
   const [userEmail, setUserEmail] = useState('');
   const [userPassword, setUserPassword] = useState('');
-  const [isSignUp, setIsSignUp] = useState(false); // Toggle between login and sign-up form
+  const [isSignUp, setIsSignUp] = useState(false); 
   const [users, setUsers] = useState([
     {
       email: "admin@kamote.ph",
       password: "kamote"
     }
   ]);
-  const [isKamoteLogin, setIsKamoteLogin] = useState(false); // Track if Kamote login is selected
+  const [isKamoteLogin, setIsKamoteLogin] = useState(false); 
 
   const emailRegEx = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
-  // Handle login form submission
   const handleLogin = (event) => {
     event.preventDefault();
     
-    // If the user is logging in via Kamote, skip email validation
     if (!isKamoteLogin && !emailRegEx.test(userEmail)) {
       alert("Please enter a valid email address (e.g., name@example.com)");
       return;
     }
 
-    // Validate user credentials (either via Kamote or standard login)
     const user = users.find((u) => u.email === userEmail && u.password === userPassword);
     if (user || (isKamoteLogin && userPassword === 'kamote')) {
       alert("Login successful!");
@@ -38,7 +34,6 @@ function Login({ onLogin }) {
     }
   };
 
-  // Handle sign-up form submission
   const handleSignUp = (event) => {
     event.preventDefault();
     
@@ -47,29 +42,29 @@ function Login({ onLogin }) {
       return;
     }
 
-    // Check if the email already exists
     const existingUser = users.find((u) => u.email === userEmail);
     if (existingUser) {
       alert("This email is already registered.");
       return;
     }
 
-    // Add the new user to the users array
     setUsers([...users, { email: userEmail, password: userPassword }]);
     alert("User registered successfully!");
 
-    // Reset the form and switch to the login form
     setUserEmail('');
     setUserPassword('');
-    setIsSignUp(false); // Switch back to login form after signing up
+    setIsSignUp(false); 
   };
 
-  // Handle Kamote login option
   const handleKamoteLogin = () => {
-    setIsKamoteLogin(true); // Mark that Kamote login was selected
-    setUserEmail('admin@kamote.ph'); // Set a dummy value for the email
-    setUserPassword('kamote'); // Set the predefined password for Kamote
+    setIsKamoteLogin(true); 
+    setUserEmail('admin@kamote.ph'); 
+    setUserPassword('kamote'); 
   };
+
+  const forgotPassword = () => {
+    alert("Feature coming soon.");
+  }
 
   return (
     <div className={`login_form ${isSignUp ? 'sign-up' : 'login'}`}>
@@ -104,14 +99,14 @@ function Login({ onLogin }) {
             onChange={(e) => setUserEmail(e.target.value)}
             placeholder="Enter email address"
             autoComplete="off"
-            required={!isKamoteLogin} // Only require email if it's not a Kamote login
+            required={!isKamoteLogin} 
           />
         </div>
 
         <div className="input_box">
           <div className="password_title">
             <label htmlFor="password">Password</label>
-            {!isSignUp && <a href="#">Forgot Password?</a>}
+            {!isSignUp && <a href="#" onClick={forgotPassword}>Forgot Password?</a>}
           </div>
           <input
             type="password"
