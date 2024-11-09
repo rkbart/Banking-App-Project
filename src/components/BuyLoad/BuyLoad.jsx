@@ -8,13 +8,22 @@ function BuyLoad({ onClose, onBuyLoad, user }) {
     const [loadAmount, setLoadAmount] = useState(''); 
     const [selectedTelco, setSelectedTelco] = useState(''); 
     const [errorVisible, setErrorVisible] = useState(false);
-
     const telcoNumbers = {
         Globe: '+63 917 666 0232',
         Smart: '+63 919 233 0499',
         TNT: '+63 918 785 2433'
     };
 
+    const handleLoadAmountChange = (e) => {
+        const loadValue = e.target.value;
+        setLoadAmount(loadValue);
+    }
+
+    const handleKeyDown = (e) => {
+        if (['-', 'e', '+'].includes(e.key)) {
+          e.preventDefault();
+        }
+      };
    
     const handleTelcoChange = (e) => {
         const selected = e.target.value;
@@ -41,6 +50,7 @@ function BuyLoad({ onClose, onBuyLoad, user }) {
 
         onBuyLoad(amount); 
         onClose(); 
+        alert('Buy load has been successful.')
     };
 
     return (
@@ -78,7 +88,8 @@ function BuyLoad({ onClose, onBuyLoad, user }) {
                     <input
                         type="number"
                         value={loadAmount}
-                        onChange={(e) => setLoadAmount(e.target.value)} // Update state on change
+                        onChange={handleLoadAmountChange} // Update state on change
+                        onKeyDown={handleKeyDown}
                         className="input-css-load"
                         id="amountLoad"
                         required
