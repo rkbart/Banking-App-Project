@@ -27,6 +27,7 @@
     padding-bottom: 1rem;
 }
 
+
 .budget-amount, .expenses-amount, .remaining-amount {
     font-size: 29px;
 }
@@ -60,7 +61,7 @@
     font-size: 18px;
 }
 .initial-budget-amount {
-    color: var(--green);
+    color: var(--yellow);
 }
 
 .add-expenses {
@@ -358,6 +359,9 @@ margin: 0;
 
 .negative-amount {
     color: rgb(248, 65, 65);
+}
+.positive-amount {
+    color: green;
 }
 
 #graph {

@@ -325,9 +325,7 @@ return (
             )}
           </div>   
           {showBudget && (
-            <Budget onClose={handleMenuShow} 
-                    onBudget={handleBudget}  
-            />
+            <Budget />
           )} 
         </>
       )}
