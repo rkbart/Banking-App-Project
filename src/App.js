@@ -218,7 +218,7 @@ function App() {
     setShowUsers(true);
     setShowHistory(false);
     setShowAccounts(false);
-    setPayBills(false);
+    setPayBills(true);
     setBuyLoad(false);
     setBudget(false);
   };
@@ -239,11 +239,13 @@ function App() {
     setBudget(false);
   };
   const handleBuyLoad = () => {
-    setPayBills(false);
+    setPayBills(true);
     setShowAccounts(false);
     setShowUsers(false);
     setBuyLoad(true);
     setBudget(false);
+    setShowHistory(true);
+    setShowDetails(true)
   };
   const handleBudget = () => {
     setPayBills(false);
