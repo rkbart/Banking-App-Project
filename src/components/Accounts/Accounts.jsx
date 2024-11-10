@@ -19,7 +19,7 @@ function Accounts({users, onSelectUser}) {
     };
 
     return (
-        <div id="accounts-container">
+        <div id="accounts-container" className='fade-in'>
             <h2>Select a Kamote Account</h2>
             <ul id="userlist">
                 {users.slice().reverse().map((user, index) => (

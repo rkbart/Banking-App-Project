@@ -46,8 +46,7 @@ function PayBills({onClose, onPayBill, user}) {
       };
 
     return (
-        <div id="paybills-container">
-            {/* <img id='paybills-close' alt='close' src={closeGrayImg} onClick={handleCloseClick} /> */}
+        <div id="paybills-container" className='fade-in'>
             <h2 id="title">Pay Bills</h2>
             
             <div id="menu-container">
@@ -78,7 +77,7 @@ function PayBills({onClose, onPayBill, user}) {
             </div>
             
         {selectedBill && (
-            <div id="pay-bill">
+            <div id="pay-bill" className='fade-in'>
             <label>{selectedBill.charAt(0).toUpperCase() + selectedBill.slice(1).replace(/-/g, ' ')}</label>
             <input
                 id={`${selectedBill}-input`}

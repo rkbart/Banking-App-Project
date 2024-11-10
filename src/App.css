@@ -11,6 +11,16 @@
   background-position: center;
 }
 
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 0.5s ease-in forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
 #menu-wrapper {
   display: flex;
   flex-direction: column; 

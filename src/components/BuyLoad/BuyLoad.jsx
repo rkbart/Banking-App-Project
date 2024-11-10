@@ -54,7 +54,7 @@ function BuyLoad({ onClose, onBuyLoad, user }) {
     };
 
     return (
-        <div className="buyLoad-container">
+        <div className="buyLoad-container fade-in">
             <img className="closeIcon" src={closeIcon} onClick={onClose} /> {/* Close button */}
 
             <h2 className="buyLoad-header">Buy Mobile Load</h2>
@@ -82,7 +82,7 @@ function BuyLoad({ onClose, onBuyLoad, user }) {
                     placeholder="(input mobile number)"
                     required
                 />
-                {errorVisible &&(<div className="errorMessageBuyLoad">Please fill in all fields.</div>)}
+                {errorVisible &&(<div className="errorMessageBuyLoad fade-in">Please fill in all fields.</div>)}
                 <div className="payLoad">
                     <p>Amount</p>
                     <input

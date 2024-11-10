@@ -257,8 +257,6 @@ function App() {
     setShowDetails(false)
   };
 
-
-  
 return (
     <div className="App">
       {!loggedIn ? (
@@ -268,7 +266,7 @@ return (
       ) : (
         <>
           <div id="menu-wrapper">
-            {showMenu && (
+            {showMenu && ( 
                 <Menu
                   onAddUser={handleAddUser}
                   onManageAccounts={handleManageAccounts}
@@ -294,10 +292,10 @@ return (
               {showBuyLoad && (
                 <BuyLoad onClose={handleMenuShow} 
                          onBuyLoad={handleAutoLoad} 
-                         user={selectedUser}  
-                />
+                         user={selectedUser} 
+                /> 
               )}
-              {showAccounts && (
+              {showAccounts && ( 
                 <Accounts users={users} 
                           onSelectUser={handleSelectUser} 
                           onClose={handleMenuShow}
@@ -317,7 +315,8 @@ return (
               />
               )}
             {showPayBills && (
-              <PayBills onClose={handleMenuShow} 
+              <PayBills 
+                onClose={handleMenuShow} 
                 onPayBill={handleBillsPayment} 
                 user={selectedUser} 
                 isUserSelected={isUserSelected} 

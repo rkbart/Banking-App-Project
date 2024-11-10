@@ -1,5 +1,6 @@
 .buyLoad-container {
     text-align: center;
+    padding-top: 0;
     padding: 15px; 
     border-radius: 15px; 
     height: auto;
@@ -8,7 +9,12 @@
     position: relative;
     width: 45vw;
     margin-top: 0.5rem;
-    height: 210px;
+    height: 56%;
+    display: flex;
+    justify-content:space-evenly;
+    flex-direction: column;
+    align-items: stretch;
+    /* gap: 10px; */
 }
 
 .buyLoad-header {
@@ -17,7 +23,9 @@
 }
 
 .closeIcon {
-    float: right;
+    position: absolute;
+    top: 15px;
+    right: 15px;
     width: 18px;
     margin: 0;
     cursor: pointer;
@@ -28,14 +36,25 @@
 }
 
 .telco-option-css, .input-css-load {
-    padding: 0.2rem;
+    /* padding: 0.2rem;
     padding-left: 0.5rem;
     outline: none;
     border:none;
     border-radius: 10px;
     background-color: var(--eerie_black_dark);
     color: var(--white);
+    margin-top: 5px; */
+    background: rgb(80,39,121);
+    color: whitesmoke;
     margin-top: 5px;
+    padding: 8px;
+    width: 200px;
+    border: none;
+    font-size: 12px;
+    border-radius: 10px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+    outline: none;
+
 }
 
 #amountLoad{
@@ -45,22 +64,42 @@
 
 .telco-option-css, #buyLoadFor {
     width: 70%;
+    margin-bottom: 10px;
 }
 .errorMessageBuyLoad{
     color: var(--red);
     font-size: 12px;
     margin-top: 5px;
+    font-style: italic;
 }
 .payLoad {
-    display: flex;
+    /* display: flex;
     justify-content: center;
     align-items: center;
     gap: 0.5rem;
     background-color: var(--purple);
     border-radius: 15px;
     color: whitesmoke;
-    margin-top: 4px;
     height: 40px;
+    margin-top: 20px;
+    padding: 15px; */
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    background: rgb(80,39,121);
+    color: whitesmoke;
+    padding: 8px;
+    width: 85%;
+    border: none;
+    font-size: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+    outline: none;
+    cursor: pointer;
 }
 
 .payImg{

@@ -10,7 +10,7 @@ function History({ transactionHistory }) {
     };
 
     return (
-        <div id="history-container">
+        <div id="history-container" className ="fade-in">
             <h3>Transaction History</h3>
             <div id="history-table-container">
                 <table id="history-table">

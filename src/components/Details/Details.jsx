@@ -106,7 +106,7 @@ const handleSubmit = (event) => {
 };
 
     return (
-        <div id="user-info">
+        <div id="user-info" className='fade-in'>
             <h2 id="user">{`${user["First Name"]} ${user["Last Name"]}`}</h2>
             <span id="email-holder">{user.email}</span>
             <p>Available Balance</p>
@@ -132,9 +132,10 @@ const handleSubmit = (event) => {
 
             {/* Input for deposit, withdraw, or transfer */}
             {showInput && (
-                <div id="input-container">
-                    <label id="input-label">{actionType.charAt(0).toUpperCase() + actionType.slice(1)} Amount</label>
+                <div id="input-container"  className='fade-in' >
+                    <label id="input-label"  className='fade-in' >{actionType.charAt(0).toUpperCase() + actionType.slice(1)} Amount</label>
                     <input
+                         className='fade-in' 
                         id='amount-input'
                         type='number'
                         placeholder={`PHP ${actionType} amount`}
@@ -143,7 +144,7 @@ const handleSubmit = (event) => {
                         onChange={handleInputChange}
                     />
                     {actionType === 'transfer' && (
-                        <div>
+                        <div className='fade-in' >
                             <label htmlFor="transfer-user">Transfer to: </label>
                             <select 
                                 id="transfer-user" 

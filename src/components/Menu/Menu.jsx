@@ -35,7 +35,7 @@ function Menu({ onAddUser, onManageAccounts, onPayBills, onBudget, onBuyLoad, on
     }
 
     return (
-        <div id="menu">
+        <div id="menu" className='fade-in'>
             <div id="dashboard" onClick={handleDashboardClick}>
                 <MdOutlineDashboard className='dashboard' size={38}/>
                 <p>Dashboard</p>
@@ -44,10 +44,6 @@ function Menu({ onAddUser, onManageAccounts, onPayBills, onBudget, onBuyLoad, on
                 <img src={addAccountImg} alt="add account"/>
                 <p>Add</p> 
             </div>
-            {/* <div id="manage-accounts" onClick={handleManageAccountsClick}>
-                <img src={manageAccountImg} alt="manage account"/>
-                <p>Manage</p> 
-            </div> */}
             <div id="budget" onClick={handleBudgetClick}>
                 <img src={budgetImg} alt="budget" />
                 <p>Budget</p> 
@@ -59,14 +55,6 @@ function Menu({ onAddUser, onManageAccounts, onPayBills, onBudget, onBuyLoad, on
             <div id = "logout" onClick={onLogout}> 
                 <img src={depositImg} alt="logout" /> 
                 <p>Log out</p>
-            </div>
-            {/* <div id="pay-bills" onClick={handlePayBillsClick}>
-                <img src={payBillsImg} alt="pay-bills"/>
-                <p>Pay Bills</p> 
-            </div> */}
-            <div>
-                
-                
             </div>
         </div>
     )

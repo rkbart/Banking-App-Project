@@ -71,7 +71,7 @@ function Users({ users, setUsers, onClose }) {
 
     }
     return (
-        <div id="contain">
+        <div id="contain" className='fade-in'>
             <form id="form-container" onSubmit={handleSubmit}>
                 
                 <h2>Add Kamote</h2>

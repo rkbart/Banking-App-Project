@@ -177,7 +177,7 @@ const handleDeleteExpense = (index) => {
 
     return (
         <>
-        <div className = "budgetWindow">
+        <div className = "budgetWindow fade-in">
 
             <div className="budget-display-container">      
                 <p id="budgetTracker"> Budget Tracker </p>
@@ -205,7 +205,7 @@ const handleDeleteExpense = (index) => {
 
             {/* "Update Initial Budget" Modal */}
             {budgetVisible && (
-                <div className="modal">
+                <div className="modal fade-in">
                     <div className="update-budget-container">
                         <p className="update-budget">Update Budget</p>
                         <div className="update-budget-input">
@@ -232,7 +232,7 @@ const handleDeleteExpense = (index) => {
             ) }
 
             {/* "addExpense" Modal */}
-            {addExpenseVisible && (<div className="modal">
+            {addExpenseVisible && (<div className="modal fade-in">
                 <div className="expense-form">
                     <p className="add-expenses">Add Expenses</p>
                     Amount:*
@@ -270,7 +270,7 @@ const handleDeleteExpense = (index) => {
             }
 
      {/* Expenses List:  */}
-     <div className="expenses-notebook">
+     <div className="expenses-notebook fade-in">
                 <p className="header-expenses-notebook">Expenses List:</p>
                 {expenses.length > 0 ? (
                     expenses.map((expense, index) => (
@@ -311,7 +311,7 @@ const handleDeleteExpense = (index) => {
 
             {
         graphVisible && 
-                <div id="graph">
+                <div id="graph" className='fade-in'>
                     <p id = "yourKamoteBudget">Your Kamote Budget <img src = {sweetPotato} id = "sweetPotatoIcon"/> </p>
                     <Pie 
                     data={generateChartData()} options={chartOptions}
