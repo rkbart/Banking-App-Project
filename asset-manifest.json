@@ -1,0 +1,37 @@
+{
+  "files": {
+    "main.css": "/static/css/main.0304b82e.css",
+    "main.js": "/static/js/main.733b3fdf.js",
+    "static/js/453.7e966c49.chunk.js": "/static/js/453.7e966c49.chunk.js",
+    "static/media/kamoteLogin-img.svg": "/static/media/kamoteLogin-img.5891f71287e23312cc2f.svg",
+    "static/media/kamoteBg.jpg": "/static/media/kamoteBg.10823a396f0cba867bbd.jpg",
+    "static/media/sweet-potato.png": "/static/media/sweet-potato.1bd9acb9c5cfd49d4691.png",
+    "index.html": "/index.html",
+    "static/media/internet.svg": "/static/media/internet.9153a2cb63df67f14dfad283961a02fb.svg",
+    "static/media/telecoms.svg": "/static/media/telecoms.87abd8591caa20125b91cb4ee347b382.svg",
+    "static/media/add-account.svg": "/static/media/add-account.28d020a8f5bd55d9e3bed811fbd5ba8e.svg",
+    "static/media/others_Budget.svg": "/static/media/others_Budget.99e2e86d2293f6deab4248d067f8657c.svg",
+    "static/media/pay-white.svg": "/static/media/pay-white.04706800f4f2fef8813f050105200da7.svg",
+    "static/media/visibility-off.svg": "/static/media/visibility-off.fb8188ddd361d8b29c470c7b7c4ec576.svg",
+    "static/media/others.svg": "/static/media/others.078387c4374bf153daa7f128419d9deb.svg",
+    "static/media/water.svg": "/static/media/water.207c0edb8801529811ddb0dbe2a8135e.svg",
+    "static/media/lunch_dining_Budget.svg": "/static/media/lunch_dining_Budget.298ab67f6e8cc2403bfd8bdd307ad3c6.svg",
+    "static/media/visibility.svg": "/static/media/visibility.98a2e7fe2109f244ea0f85cda24a4e4d.svg",
+    "static/media/budget.svg": "/static/media/budget.d5689874588f8618f7e396d3de40114b.svg",
+    "static/media/payments_Budget.svg": "/static/media/payments_Budget.d6522bf96ecd53afd27b4cf9be598eb0.svg",
+    "static/media/edit_square_Budget.svg": "/static/media/edit_square_Budget.186348f3bad0cf0ac88d34719e7701ab.svg",
+    "static/media/deposit.svg": "/static/media/deposit.f6ac12728d1bad834d46de7b9dace426.svg",
+    "static/media/credit-cards.svg": "/static/media/credit-cards.734824b1a96f4c34f6a5fbf8161f696e.svg",
+    "static/media/buy-load.svg": "/static/media/buy-load.15caf2a3eb33b85c3357e7c7eca92823.svg",
+    "static/media/close-white.svg": "/static/media/close-white.48f4ffaa8a3b8cb644188cb831fecb95.svg",
+    "static/media/electricity.svg": "/static/media/electricity.83fb963163479e9746e96b7e7f9c51b9.svg",
+    "static/media/close.svg": "/static/media/close.16698eeb682159e95b1f56436b84e77c.svg",
+    "main.0304b82e.css.map": "/static/css/main.0304b82e.css.map",
+    "main.733b3fdf.js.map": "/static/js/main.733b3fdf.js.map",
+    "453.7e966c49.chunk.js.map": "/static/js/453.7e966c49.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0304b82e.css",
+    "static/js/main.733b3fdf.js"
+  ]
+}
