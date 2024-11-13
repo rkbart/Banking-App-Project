@@ -7,7 +7,7 @@ import othersIcon from '../../assets/others_Budget.svg'
 import deleteIcon from '../../assets/close.svg'
 import { Pie } from 'react-chartjs-2';
 import sweetPotato from '../../assets/sweet-potato.png'
-import { Chart as ChartJS, ArcElement, Tooltip, Legend, defaults, plugins } from 'chart.js';
+import { Chart as ChartJS, ArcElement, Tooltip, Legend} from 'chart.js';
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 
@@ -186,6 +186,7 @@ function Budget() {
                             
                             <img
                                 src = {editSquare}
+                                alt = "edit button"
                                 className="edit-square"
                                 onClick={displayBudgetModal}
                             />
@@ -262,16 +263,18 @@ function Budget() {
                             <option className="option-css" value="Others">Others</option>
                         </select>
                         <br />
+
+                        <div className="form-button-container">
+                            <button className="cancel-expense-btn" onClick = {hideAddExpense}>Cancel</button>
+                            <button className="save-expense-btn" onClick= {handleSaveExpense}>Save</button>
+                        </div>
                     </div>
 
                     {errorVisible && (
                         <div className="errorMessage">Please fill in all fields.</div>
                     )}
 
-                    <div className="form-button-container">
-                        <button className="cancel-expense-btn" onClick = {hideAddExpense}>Cancel</button>
-                        <button className="save-expense-btn" onClick= {handleSaveExpense}>Save</button>
-                    </div>
+                    
                 
                 </div>
             )}
@@ -320,7 +323,10 @@ function Budget() {
                     {graphVisible && 
                         <div id="graph" className='fade-in'>
                             <p id = "yourKamoteBudget">Your Kamote Budget 
-                                <img src = {sweetPotato} id = "sweetPotatoIcon"/> 
+                                <img 
+                                src = {sweetPotato} 
+                                alt = "sweet potato icon"
+                                id = "sweetPotatoIcon"/> 
                             </p>
                             <Pie 
                             data={generateChartData()} 
