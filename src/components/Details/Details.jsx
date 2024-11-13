@@ -2,10 +2,11 @@ import { useState, useEffect } from 'react';
 import './Details.css';
 import visibility from "../../assets/visibility.svg";
 import visibilityOff from "../../assets/visibility-off.svg";
-import depositImg from "../../assets/deposit.svg";
-// import withdrawImg from "../../assets/"
-// import transferImg from "../../assets/"
-import closeImg from "../../assets/close.svg";
+import { MdSend } from "react-icons/md";
+import { PiHandDeposit } from "react-icons/pi";
+import { PiHandWithdraw } from "react-icons/pi";
+import { BiTransfer } from "react-icons/bi";
+import { IoCloseOutline } from "react-icons/io5";
 
 
 function Details({user, users, onDeposit, onWithdrawal, isUserSelected, onSubmitTransfer}) {
@@ -38,7 +39,7 @@ function Details({user, users, onDeposit, onWithdrawal, isUserSelected, onSubmit
         setShowInput(true); 
     
         if (type === 'transfer') {
-            setSelectedTransferUser(users[0]); // set a default user to transfer to
+            setSelectedTransferUser(users[0]); // set a default user to transfer to (first object)
         }
     };
 
@@ -52,7 +53,7 @@ function Details({user, users, onDeposit, onWithdrawal, isUserSelected, onSubmit
         setInputAmount(event.target.value);
     };
 
-    const handleTransferUserChange = (event) => {
+    const handleTransferUserChange = (event) => { // select a user to transfer to
         const selectedUserEmail = event.target.value; // dropdown value
         const selectedUser = users.find(
             user => user.email === selectedUserEmail); // search for user object with same email as dropdown
@@ -77,15 +78,18 @@ const handleSubmit = (event) => {
     }
         //not NotaNumber = valid number
     if (!isNaN(amount) && amount > 0) {
+        
         if (actionType === 'deposit') {
             onDeposit(amount); // call the deposit function from props
         } else if (actionType === 'withdraw') {
+            
             if (amount > user.balance) { // check if withdrawal exceeds balance
                 alert("Withdrawal amount exceeds the available balance.");
                 return; // exit the function if the alert is shown
             }
             onWithdrawal(amount); // call the withdrawal function from props
         } else if (actionType === 'transfer') {
+            
             if (!selectedTransferUser) { // ensures a user is selected
                 alert("Please select a user to transfer to."); 
                 return;
@@ -120,16 +124,13 @@ const handleSubmit = (event) => {
 
             <div id="depo-with">
                 <span id="deposit" onClick={() => handleActionClick('deposit')}>
-                    <img src={depositImg} 
-                         alt="deposit"/> Deposit
+                    <PiHandDeposit alt="deposit"/> Deposit
                 </span>
                 <span id="withdraw" onClick={() => handleActionClick('withdraw')}>
-                    <img src={depositImg} 
-                         alt="withdraw"/> Withdraw
+                    <PiHandWithdraw alt="withdraw"/> Withdraw
                 </span>
                 <span id="transfer" onClick={() => handleActionClick('transfer')}>
-                    <img src={depositImg} 
-                         alt="transfer"/> Transfer
+                    <BiTransfer alt="transfer"/> Transfer
                 </span>
             </div>
 
@@ -138,7 +139,7 @@ const handleSubmit = (event) => {
                 <div id="input-container"  className='fade-in' >
                     <label id="input-label"  className='fade-in' >{actionType.charAt(0).toUpperCase() + actionType.slice(1)} Amount</label>
                     <input
-                         className='fade-in' 
+                        className='fade-in' 
                         id='amount-input'
                         type='number'
                         placeholder={`PHP ${actionType} amount`}
@@ -164,16 +165,8 @@ const handleSubmit = (event) => {
                             </select>
                         </div>
                     )}
-                    <img
-                        id='submit-img'
-                        src={depositImg}
-                        onClick={handleSubmit}
-                    />
-                    <img
-                        id='close-button'
-                        src={closeImg}
-                        onClick={handleClose}
-                    />
+                    <MdSend id='submit-img' onClick={handleSubmit}/>
+                    <IoCloseOutline id='close-button' onClick={handleClose}/>
                 </div>
             )}
         </div>
