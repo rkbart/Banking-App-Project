@@ -12,7 +12,7 @@ function Accounts({users, onSelectUser}) {
         });
 
         setUserAvatars(avatars);
-    }, [users]); // dependency - effect will only run when users array changes
+    }, [users]); // dependency - effect will only run when users array loads and changes
 
     const handleUserClick = (user) => {
         onSelectUser(user);

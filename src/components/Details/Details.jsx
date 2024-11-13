@@ -3,14 +3,16 @@ import './Details.css';
 import visibility from "../../assets/visibility.svg";
 import visibilityOff from "../../assets/visibility-off.svg";
 import depositImg from "../../assets/deposit.svg";
+// import withdrawImg from "../../assets/"
+// import transferImg from "../../assets/"
 import closeImg from "../../assets/close.svg";
 
 
 function Details({user, users, onDeposit, onWithdrawal, isUserSelected, onSubmitTransfer}) {
+    
     useEffect(() => {
-        // This effect runs whenever the 'user' prop changes
         setSelectedTransferUser(users.find(u => u.email === user.email));
-    }, [user, users]); // When user or users change, update selectedTransferUser
+    }, [user, users]); // when user or users change, update selectedTransferUser
 
 
     const [showInput, setShowInput] = useState(false);
@@ -20,11 +22,11 @@ function Details({user, users, onDeposit, onWithdrawal, isUserSelected, onSubmit
     const [selectedTransferUser, setSelectedTransferUser] = useState(null); // select for user transfer
 
     const handleEye = () => {
-        setIsBalanceVisible((prev) => !prev);
-    }
+        setIsBalanceVisible((prev) => !prev); // toggle true or false
+    };
     
     const handleActionClick = (type) => {
-        if (!isUserSelected) { // Check if user is selected
+        if (!isUserSelected) { // check if user is selected
             alert("Please select a user before performing any actions.");
             return; // Prevent further actions if no user is selected
         }
@@ -32,18 +34,18 @@ function Details({user, users, onDeposit, onWithdrawal, isUserSelected, onSubmit
             alert("You cannot withdraw with a zero balance.");
             return;
         }
-        setActionType(type);
-        setShowInput(true);
+        setActionType(type);  // 'withdraw', 'deposit', 'transfer'
+        setShowInput(true); 
     
         if (type === 'transfer') {
-            setSelectedTransferUser(users[0]); // default to the first user
+            setSelectedTransferUser(users[0]); // set a default user to transfer to
         }
     };
 
     const handleClose = () => {
         setShowInput(false);
-        setInputAmount(''); // Reset the input field
-        setSelectedTransferUser(null); // Reset selected transfer user
+        setInputAmount(''); // reset the input field
+        setSelectedTransferUser(null); // reset selected transfer user
     };
     
     const handleInputChange = (event) => {
@@ -51,9 +53,10 @@ function Details({user, users, onDeposit, onWithdrawal, isUserSelected, onSubmit
     };
 
     const handleTransferUserChange = (event) => {
-        const selectedUserEmail = event.target.value;
-        const selectedUser = users.find(user => user.email === selectedUserEmail);
-        setSelectedTransferUser(selectedUser);
+        const selectedUserEmail = event.target.value; // dropdown value
+        const selectedUser = users.find(
+            user => user.email === selectedUserEmail); // search for user object with same email as dropdown
+        setSelectedTransferUser(selectedUser); // update state with selected user
     };
     
     const formatBalance = (amount) => {
@@ -66,24 +69,24 @@ function Details({user, users, onDeposit, onWithdrawal, isUserSelected, onSubmit
 
 const handleSubmit = (event) => {
     event.preventDefault();
-    const amount = parseFloat(inputAmount);
+    const amount = Number(inputAmount);
     
     if (!user) { // check to ensure a user is selected
         alert("Please select a user before performing any action.");
         return;
     }
-
+        //not NotaNumber = valid number
     if (!isNaN(amount) && amount > 0) {
         if (actionType === 'deposit') {
-            onDeposit(amount); // Call the deposit function from props
+            onDeposit(amount); // call the deposit function from props
         } else if (actionType === 'withdraw') {
-            if (amount > user.balance) { // Check if withdrawal exceeds balance
+            if (amount > user.balance) { // check if withdrawal exceeds balance
                 alert("Withdrawal amount exceeds the available balance.");
-                return; // Exit the function if the alert is shown
+                return; // exit the function if the alert is shown
             }
-            onWithdrawal(amount); // Call the withdrawal function from props
+            onWithdrawal(amount); // call the withdrawal function from props
         } else if (actionType === 'transfer') {
-            if (!selectedTransferUser) {
+            if (!selectedTransferUser) { // ensures a user is selected
                 alert("Please select a user to transfer to."); 
                 return;
             }
@@ -97,7 +100,7 @@ const handleSubmit = (event) => {
                 return;
             }
             
-            onSubmitTransfer(amount, selectedTransferUser);
+            onSubmitTransfer(amount, selectedTransferUser); // withdraw then transfer
         }
         handleClose(); 
     } else {
@@ -150,13 +153,12 @@ const handleSubmit = (event) => {
                                 id="transfer-user" 
                                 onChange={handleTransferUserChange} 
                                 value={selectedTransferUser ? selectedTransferUser.email : ''}
-                            >   
-                                {/* <option value="" disabled selected>-- Select account --</option> */}
-                                {users.map((user) => (
+                                >   
+                               {users.map((user) => ( // gets objects in array but display first and last name only
                                     <option 
                                         key={user.email} 
                                         value={user.email}
-                                    > {`${user["First Name"]} ${user["Last Name"]}`}
+                                        > {`${user["First Name"]} ${user["Last Name"]}`}
                                     </option>
                                 ))}
                             </select>

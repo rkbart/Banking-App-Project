@@ -21,6 +21,7 @@
     opacity: 1;
   }
 }
+
 #menu-wrapper {
   display: flex;
   flex-direction: column; 

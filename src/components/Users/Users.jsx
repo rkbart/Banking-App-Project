@@ -9,6 +9,13 @@ function Users({ users, setUsers, onClose }) {
     const [password, setPassword] = useState('');
     const [balance, setBalance] = useState('');
     
+    // ^ = start of string
+    // [a-zA-Z0-9._%+-]+ = lowercase, uppercase, digits, special charcters
+    // + = 1 or more
+    // @ = literal symbol
+    // \. = literal period. Escape character
+    // {2,} = at least 2 letters
+    // $ = end of string
     const emailRegEx = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/; 
     const nameRegEx = /^[A-Za-z]+$/;
 
@@ -17,36 +24,37 @@ function Users({ users, setUsers, onClose }) {
     const handleSubmit = (event) => {
         event.preventDefault(); // para d mag refresh pag submit
 
+        // checks if all  states are not falsy (empty)
         if (!firstName || !lastName || !email || !password || !balance) {
-            alert("All fields must be filled out!");
+            alert("All fields must be filled out properly!");
             return; 
         }
-         // Name validation
+         // name validation
         if (!nameRegEx.test(firstName) || !nameRegEx.test(lastName)) {
             alert("Please enter a valid name.");
             return;
         }
-
+        // email validation
         if (!emailRegEx.test(email)) {
             alert("Please enter a valid email address (e.g., name@example.com)");
             return;
         }
 
-    // Check if a user with the same first and last name already exists
+    // check if a user with the same first and last name already exists and returns a boolean value
     const isDuplicate = users.some(user => 
         user["First Name"] === firstName && user["Last Name"] === lastName
         );
-
+        // if true, alert
         if (isDuplicate) {
             alert("An account with this name already exists. Please use a different name.");
             return;
         }
 
-
+        // added feature: capitalized first letter of name and converts other letters to lower case
         const capitalizedFirstName = firstName.charAt(0).toUpperCase() + firstName.slice(1).toLowerCase();
         const capitalizedLastName = lastName.charAt(0).toUpperCase() + lastName.slice(1).toLowerCase();
     
-        // Create newUser object with capitalized names
+        // create newUser object with capitalized names
         const newUser = {
             "First Name": capitalizedFirstName,
             "Last Name": capitalizedLastName,
@@ -67,7 +75,7 @@ function Users({ users, setUsers, onClose }) {
 
         alert(`${newUser['First Name']} ${newUser['Last Name']}'s account has been created.`)
 
-        onClose();
+        onClose(); // closes component
 
     }
     return (

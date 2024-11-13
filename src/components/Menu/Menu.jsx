@@ -14,22 +14,13 @@ function Menu({ onAddUser, onManageAccounts, onPayBills, onBudget, onBuyLoad, on
         onAddUser(); // Call the function to show Users component
     };
 
-    const handleManageAccountsClick = () => {
-        onManageAccounts(); // Call the function to show Accounts component
-    };
-
-    const handlePayBillsClick = () => {
-        onPayBills(); // Call the function to show Accounts component
-    };
     const handleBudgetClick = () => {
         onBudget(); // Call the function to show Accounts component
     };
     const handleBuyLoadClick = () => {
         onBuyLoad(); // Call the function to show Accounts component
     };
-    const handleLogOut = () => {
-        onLogout();
-    }
+   
     const handleDashboardClick = () => {
         onClose();
     }
