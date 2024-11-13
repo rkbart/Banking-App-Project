@@ -42,7 +42,7 @@ function Users({ users, setUsers, onClose }) {
 
     // check if a user with the same first and last name already exists and returns a boolean value
     const isDuplicate = users.some(user => 
-        user["First Name"] === firstName && user["Last Name"] === lastName
+        user["First Name"].toLowerCase() === firstName.toLowerCase() && user["Last Name"].toLowerCase() === lastName.toLowerCase()
         );
         // if true, alert
         if (isDuplicate) {

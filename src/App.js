@@ -75,13 +75,15 @@ function App() {
   };
 
   const handleDeposit = (amount) => {
-    setUsers((prevUsers) => {
+    setUsers((prevUsers) => { // iterates users' array
       return prevUsers.map((user) => {
-        if (user.email === selectedUser.email) {
-          const updatedUser = { ...user, balance: user.balance + amount };
-          setSelectedUser(updatedUser);
+        if (user.email === selectedUser.email) { // if details card email matches a user in users array
+          const updatedUser = { ...user, 
+            balance: user.balance + amount 
+            }; // copy of user object with updated balance
+          setSelectedUser(updatedUser); // update what shows in details card
 
-          setTransactionHistory((prevHistory) => [
+          setTransactionHistory((prevHistory) => [ // stores object in transactionHistory array
             ...prevHistory,
             {
               user: `${user["First Name"]} ${user["Last Name"]}`,
@@ -152,7 +154,7 @@ function App() {
       const newUsers = prevUsers.map((user) => {
         if (user.email === selectedUser.email) {
           updatedSender = { ...user, balance: user.balance - amount };   // withdraw
-          return updatedSender;  
+          return updatedSender;  // creates object
         }
         if (user.email === selectedTransferUser.email) {
           updatedRecipient = { ...user, balance: user.balance + amount };  // depo
@@ -161,7 +163,7 @@ function App() {
         return user;  // return other users unmodified
       });
   
-      setTransactionHistory((prevHistory) => [
+      setTransactionHistory((prevHistory) => [ // create history entry
         ...prevHistory,
         {
           activity: "Transfer",  
@@ -174,10 +176,11 @@ function App() {
       return newUsers;
     });
     
-    const updatedSelectedUser = { ...selectedUser, balance: selectedUser.balance - amount };
-    setSelectedUser(updatedSelectedUser);
+    const updatedSelectedUser = { ...selectedUser, 
+                                balance: selectedUser.balance - amount };
+    setSelectedUser(updatedSelectedUser); // update details card
     
-    handleMenuShow();
+    handleMenuShow(); // close modal and go back to dashboard
   };
   
   

@@ -263,18 +263,16 @@ function Budget() {
                             <option className="option-css" value="Others">Others</option>
                         </select>
                         <br />
-
-                        <div className="form-button-container">
-                            <button className="cancel-expense-btn" onClick = {hideAddExpense}>Cancel</button>
-                            <button className="save-expense-btn" onClick= {handleSaveExpense}>Save</button>
-                        </div>
                     </div>
 
                     {errorVisible && (
                         <div className="errorMessage">Please fill in all fields.</div>
                     )}
 
-                    
+                    <div className="form-button-container">
+                        <button className="cancel-expense-btn" onClick = {hideAddExpense}>Cancel</button>
+                        <button className="save-expense-btn" onClick= {handleSaveExpense}>Save</button>
+                    </div>
                 
                 </div>
             )}
