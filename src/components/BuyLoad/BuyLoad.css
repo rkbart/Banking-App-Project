@@ -36,14 +36,6 @@
 }
 
 .telco-option-css, .input-css-load {
-    /* padding: 0.2rem;
-    padding-left: 0.5rem;
-    outline: none;
-    border:none;
-    border-radius: 10px;
-    background-color: var(--eerie_black_dark);
-    color: var(--white);
-    margin-top: 5px; */
     background: rgb(80,39,121);
     color: whitesmoke;
     margin-top: 5px;
@@ -66,6 +58,7 @@
     width: 70%;
     margin-bottom: 10px;
 }
+
 .errorMessageBuyLoad{
     color: var(--red);
     font-size: 12px;
@@ -73,16 +66,6 @@
     font-style: italic;
 }
 .payLoad {
-    /* display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 0.5rem;
-    background-color: var(--purple);
-    border-radius: 15px;
-    color: whitesmoke;
-    height: 40px;
-    margin-top: 20px;
-    padding: 15px; */
     margin-left: auto;
     margin-right: auto;
     margin-top: 10px;
@@ -103,9 +86,14 @@
 }
 
 .payImg{
-    color: whitesmoke;
-    vertical-align: middle;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: auto;
     cursor: pointer;
+    margin-left: -15px;
+    margin-top: 4px;
 }
 
 .buyLoadForText, .selectTelcoText {

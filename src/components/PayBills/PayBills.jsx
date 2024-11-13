@@ -6,9 +6,8 @@ import internetImg from '../../assets/internet.svg'
 import telecomsImg from '../../assets/telecoms.svg'
 import cardsImg from '../../assets/credit-cards.svg'
 import othersImg from '../../assets/others.svg'
-import payImg from '../../assets/pay-white.svg'
-import closeImg from '../../assets/close-white.svg'
-// import closeGrayImg from '../../assets/close.svg'
+import { MdSend } from "react-icons/md";
+import { IoCloseOutline } from "react-icons/io5";
 
 function PayBills({onClose, onPayBill, user}) {
 
@@ -90,8 +89,10 @@ function PayBills({onClose, onPayBill, user}) {
             />
             
             <div id="pay-close">
-                <img id='pay-img' alt='pay' src={payImg} onClick={handlePayBill} />
-                <img id='closeImg' alt='cancel' src={closeImg} onClick={handleClose} />
+                {/* <img id='pay-img' alt='pay' src={payImg} onClick={handlePayBill} /> */}
+                {/* <img id='closeImg' alt='cancel' src={closeImg} onClick={handleClose} /> */}
+                <MdSend id='pay-img' alt='pay' onClick={handlePayBill}/>
+                <IoCloseOutline id='closeImg' alt="cancel" onClick={handleClose}/>
             </div>
         </div>
     )}

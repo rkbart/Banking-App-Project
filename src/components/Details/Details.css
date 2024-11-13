@@ -148,5 +148,9 @@ option {
     background-color: var(--eerie_black_light);
 }
 
-
+#submit-img {
+cursor: pointer;
+width: 24px;
+height: auto;
+}
 
