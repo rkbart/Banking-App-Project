@@ -11,11 +11,6 @@ import { IoCloseOutline } from "react-icons/io5";
 
 function Details({user, users, onDeposit, onWithdrawal, isUserSelected, onSubmitTransfer}) {
     
-    useEffect(() => {
-        setSelectedTransferUser(users.find(u => u.email === user.email));
-    }, [user, users]); // when user or users change, update selectedTransferUser
-
-
     const [showInput, setShowInput] = useState(false);
     const [inputAmount, setInputAmount] = useState('');
     const [actionType, setActionType] = useState(''); // deposit, withdraw, transfer
@@ -67,6 +62,10 @@ function Details({user, users, onDeposit, onWithdrawal, isUserSelected, onSubmit
         maximumFractionDigits: 2,
         });
     };
+    
+    useEffect(() => {
+        setSelectedTransferUser(users.find(u => u.email === user.email));
+    }, [user, users]); // when user or users change, update selectedTransferUser
 
 const handleSubmit = (event) => {
     event.preventDefault();
@@ -117,7 +116,7 @@ const handleSubmit = (event) => {
             <h2 id="user">{`${user["First Name"]} ${user["Last Name"]}`}</h2>
             <span id="email-holder">{user.email}</span>
             <p>Available Balance</p>
-            <span id="balance-holder">{isBalanceVisible ? `PHP ${formatBalance(user.balance)}` : 'PHP ***********'}</span>
+            <span id="balance-holder">{isBalanceVisible ? 'PHP ***********' : `PHP ${formatBalance(user.balance)}`}</span>
             <span id="hide" onClick={handleEye}>
                 <img src={isBalanceVisible ? visibility : visibilityOff} alt="toggle visibility" />
             </span>
@@ -134,7 +133,7 @@ const handleSubmit = (event) => {
                 </span>
             </div>
 
-            {/* Input for deposit, withdraw, or transfer */}
+            {/* Input for deposit and withdraw*/}
             {showInput && (
                 <div id="input-container"  className='fade-in' >
                     <label id="input-label"  className='fade-in' >{actionType.charAt(0).toUpperCase() + actionType.slice(1)} Amount</label>

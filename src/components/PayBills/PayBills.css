@@ -3,7 +3,7 @@
     text-align: center;
     padding: 20px; 
     border-radius: 15px; 
-    height: 32vh;
+    height: 210px;
     background-color: var(--eerie_black_light);
     color: var(--white);
     position: relative;
@@ -29,25 +29,19 @@
     cursor: pointer;
 }
 
-#paybills-close {
-    float: right;
-    width: 18px;
-    margin: 0;
-    cursor: pointer;
-}
-
 #pay-bill {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 0.5rem;
+    gap: 7px;
     background-color: var(--purple);
     border-radius: 15px;
     color: whitesmoke;
     margin-top: 4px;
+    padding: 2px;
 }
 #electricity-input, #water-input, #internet-input, #telecoms-input, #cards-input, #others-input {
-    padding: 0.2rem;
+    padding: 2.5px;
     padding-left: 0.5rem;
     outline: none;
     border:none;
@@ -66,7 +60,6 @@ align-items: center;
 }
 
 #closeImg {
-    width: 20px;
+    height: 32px;
     cursor: pointer; 
-    margin-left: 0.25rem;
 }

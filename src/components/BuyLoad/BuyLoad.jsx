@@ -2,6 +2,8 @@ import './BuyLoad.css'
 import { useState } from 'react'
 import closeIcon from '../../assets/close.svg'
 import payImg from '../../assets/pay-white.svg'
+import { MdSend } from "react-icons/md";
+import { IoCloseOutline } from "react-icons/io5";
 
 function BuyLoad({ onClose, onBuyLoad, user }) {
     const [mobileNumber, setMobileNumber] = useState(''); 
@@ -55,7 +57,8 @@ function BuyLoad({ onClose, onBuyLoad, user }) {
 
     return (
         <div className="buyLoad-container fade-in">
-            <img className="closeIcon" src={closeIcon} onClick={onClose} /> {/* Close button */}
+            {/* <img className="closeIcon" src={closeIcon} onClick={onClose} /> Close button */}
+            <IoCloseOutline className="closeIcon" alt="cancel" onClick={onClose}/>
 
             <h2 className="buyLoad-header">Buy Mobile Load</h2>
 
@@ -95,7 +98,8 @@ function BuyLoad({ onClose, onBuyLoad, user }) {
                         required
                     />
                     <div className="payImg">
-                        <img src={payImg} onClick={handleBuyLoad} />
+                        <MdSend id='pay-img' alt='pay' onClick={handleBuyLoad}/>
+                    {/* <img src={payImg} onClick={handleBuyLoad} /> */}
                     </div>
                 </div>
             </div>
