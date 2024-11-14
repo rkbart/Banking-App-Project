@@ -34,7 +34,8 @@
 
 .edit-square {
     width: 20px;
-    margin-left: 5px;
+    margin-left: 11px;
+    font-size: 20px;
 }
 
 .edit-square:hover {
@@ -97,8 +98,7 @@
 }
 
 .addBtn {
-    /* margin-top: 12px; */
-    margin-top: 70px;
+    margin-top: 15px;
     font-size: 20px;
     color: var(--white);
     background: rgb(78,49,170);
@@ -116,25 +116,21 @@
 
 .expense-item{
     display: flex;
-    margin: 0.05rem;
+    margin: 3px;
+    background-color: var(--eerie_black_dark);
+    border-radius: 10px;
+    padding: 10px;
 }
 
 .expense-icon{
+    margin-top: 5px;
     margin-left:1rem;
     margin-bottom: 0.05rem;
-
+    font-size: 23px;
+    color: var(--pink);
 }
 
   /* Update Budget Modal CSS */
-.x-icon {
-    display: inline;
-    color:#424242;
-}
-
-.x-icon:hover{
-    cursor: pointer;
-}
-
 .modal {
     position: fixed;
     top:0;
@@ -234,9 +230,10 @@
 
 
 .errorMessage{
-    color: var(--white);
+    margin-left: 12px;
+    color: var(--red);
     font-size: 12px;
-    margin-top: 5px;
+    font-style: italic;
 }
 
 input::-webkit-outer-spin-button,
@@ -281,7 +278,7 @@ margin: 0;
 
 .cancel-expense-btn,.save-expense-btn{
     font-size: 15px;
-    margin-top:20px;
+    margin-top:11px;
     width:100%;
 }
 
@@ -314,6 +311,11 @@ margin: 0;
     color: var(--white);
 }
 
+.no-expenses-added{
+    padding-left: 12px;
+    margin: 10px;
+    margin-left: 8px;
+}
 .expense-book-list {
     margin: 3px;
     margin-top: 10px;
@@ -329,12 +331,13 @@ margin: 0;
 
 .delete-icon {
     display: flex;
-    width: 15px;
-    height: 15px;
-    margin-left: 10px;
+    width: 14px;
+    height: 14px;
+    margin-left: 8px;
+    text-align: right;
     cursor: pointer;
     vertical-align: middle;
-    margin-top: 5px;
+    margin-top: 13px;
 }
 
 .negative-amount {

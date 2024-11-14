@@ -1,13 +1,14 @@
 import './Budget.css'
 import { useState } from 'react';
-import editSquare from '../../assets/edit_square_Budget.svg'
-import foodIcon from '../../assets/lunch_dining_Budget.svg'
-import billsIcon from '../../assets/payments_Budget.svg'
-import othersIcon from '../../assets/others_Budget.svg'
+import { FaRegEdit } from "react-icons/fa";
+import { MdFastfood } from "react-icons/md";
+import { MdReceiptLong } from "react-icons/md";
+import { SlNotebook } from "react-icons/sl";
 import deleteIcon from '../../assets/close.svg'
 import { Pie } from 'react-chartjs-2';
 import sweetPotato from '../../assets/sweet-potato.png'
-import { Chart as ChartJS, ArcElement, Tooltip, Legend} from 'chart.js';
+import { FaMoneyBillTransfer } from "react-icons/fa6";
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 
@@ -21,6 +22,9 @@ function Budget() {
     const hideAddExpense = () => {
         setAddExpenseVisible(false)
         setErrorVisible(false);
+        setValidAmount(false);
+        setExpenseAmount('');
+        setExpenseCategory('');
     }
 
     const [updateBudget, setUpdateBudget] = useState('');
@@ -84,6 +88,14 @@ function Budget() {
         }
     };
 
+    const formatBalance = (amount) => {
+        return amount.toLocaleString("en-US", {
+        style:"decimal",
+        minimumFractionDigits: 2,
+        maximumFractionDigits:2
+    });
+    }
+
     const handleBudgetInput = (e) => {
         const value = e.target.value;
         const validDecimalPattern = /^\d*\.?\d{0,2}$/;
@@ -91,6 +103,7 @@ function Budget() {
             setUpdateBudget(value);
         }
         };
+
 
     const handleSaveBudget = () => {
         const numberValue = parseFloat(updateBudget);
@@ -100,37 +113,34 @@ function Budget() {
         }
         hideBudgetModal();
     };
-
-    const formatBalance = (amount) => {
-        return amount.toLocaleString("en-US", {
-        style:"decimal",
-        minimumFractionDigits: 2,
-        maximumFractionDigits:2
-    });
-    }
-
+    
     const [expenseAmount, setExpenseAmount] = useState('');
     const [expenseCategory, setExpenseCategory] = useState('');
     const [expenses, setExpenses] = useState([]);
     const [totalExpenses, setTotalExpenses] = useState(0);
     const [errorVisible, setErrorVisible] = useState(false);
-
+    const [validAmount, setValidAmount] = useState(false);
     // Update the input values for expenses
     const handleExpenseAmount = (e) => setExpenseAmount(e.target.value);
     const handleExpenseCategory = (e) => setExpenseCategory(e.target.value);
-    const saveDisabled = !expenseAmount || !expenseCategory
+    const saveDisabled =  expenseAmount <= 0 || !expenseCategory 
     
     // Save expense and update the total expenses
     const handleSaveExpense = () => {
+        const expenseValue = parseFloat(expenseAmount);
         if (saveDisabled) {
-            setErrorVisible(true); // Show error if fields are empty
+            setErrorVisible(true) // Show error if fields are empty
+            if(expenseValue <= 0){
+                setValidAmount(true)
+                setErrorVisible(false)
+            };
             return;
         } 
-        const expenseValue = parseFloat(expenseAmount);
-
         // Proceed if fields are filled
         if (!isNaN(expenseValue)) {
-            const newExpense = { amount: expenseValue, category: expenseCategory};
+            const newExpense = { 
+                amount: expenseValue, category: expenseCategory
+            };
             const updatedExpenses = [...expenses, newExpense];
             setExpenses(updatedExpenses);
             setTotalExpenses(prevTotal => {
@@ -184,8 +194,7 @@ function Budget() {
                                 formatBalance(displayBudget) : '0.00'} 
                             </span>
                             
-                            <img
-                                src = {editSquare}
+                            <FaRegEdit
                                 alt = "edit button"
                                 className="edit-square"
                                 onClick={displayBudgetModal}
@@ -247,7 +256,11 @@ function Budget() {
                         onChange= {handleExpenseAmount} 
                         onKeyDown={handleKeyDown}
                         required />
+                        {validAmount && (
+                        <div className="errorMessage">Please enter a valid amount.</div>
+                        )}
                         <br />
+                        
                         Expense category:*
                         <select 
                         className="input-css" 
@@ -262,17 +275,16 @@ function Budget() {
                             <option className="option-css" value="Transfer">Transfer</option>
                             <option className="option-css" value="Others">Others</option>
                         </select>
-                        <br />
-                    </div>
-
-                    {errorVisible && (
+                        {errorVisible && (
                         <div className="errorMessage">Please fill in all fields.</div>
-                    )}
-
-                    <div className="form-button-container">
-                        <button className="cancel-expense-btn" onClick = {hideAddExpense}>Cancel</button>
-                        <button className="save-expense-btn" onClick= {handleSaveExpense}>Save</button>
-                    </div>
+                        )}
+                        <div className="form-button-container">
+                                <button className="cancel-expense-btn" onClick = {hideAddExpense}>Cancel</button>
+                                <button className="save-expense-btn" onClick= {handleSaveExpense}>Save</button>
+                        </div>
+                        <br />
+                         
+                    </div>     
                 
                 </div>
             )}
@@ -286,17 +298,26 @@ function Budget() {
                                 <div key={index} className="expense-item">
                         
                                     {/* Display icon based on category */}
-                                    <img
-                                        src={
-                                            expense.category === 'Food'
-                                                ? foodIcon
-                                                : expense.category === 'Bills'
-                                                ? billsIcon
-                                                : othersIcon // Fallback icon for other categories
-                                        }
-                                        alt={expense.category}
-                                        className="expense-icon"
-                                    />
+
+                                    {expense.category === 'Food' && 
+                                    <MdFastfood 
+                                        alt="Food" 
+                                        className="expense-icon" />}
+
+                                    {expense.category === 'Bills' && 
+                                    <MdReceiptLong  
+                                        alt="Bills" 
+                                        className="expense-icon" />}
+
+                                    {expense.category === 'Transfer' && 
+                                    <FaMoneyBillTransfer 
+                                        alt= "Transfer" 
+                                        className="expense-icon"/>}
+
+                                    {expense.category === 'Others' && 
+                                    <SlNotebook
+                                        alt="Others" 
+                                        className="expense-icon" />}
                                     
                                     <p className = "expense-book-list">{expense.category}</p>
                                     <p className = "expense-book-list">P{formatBalance(expense.amount)}</p>
@@ -312,19 +333,17 @@ function Budget() {
                                 </div>
                             ))
                         ) : (
-                            <div className = "expense-book-list">No expenses added yet.</div>
+                            <div className = "no-expenses-added">No expenses added yet.</div>
                         )}
-                        
                         <button className="addBtn" onClick={displayAddExpense}>Add Expense</button>
             </div>
 
                     {graphVisible && 
                         <div id="graph" className='fade-in'>
                             <p id = "yourKamoteBudget">Your Kamote Budget 
-                                <img 
-                                src = {sweetPotato} 
-                                alt = "sweet potato icon"
-                                id = "sweetPotatoIcon"/> 
+                                <img src = {sweetPotato} 
+                                id = "sweetPotatoIcon"
+                                alt = "sweet potato icon"/> 
                             </p>
                             <Pie 
                             data={generateChartData()} 
