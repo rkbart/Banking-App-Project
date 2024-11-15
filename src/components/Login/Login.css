@@ -4,7 +4,7 @@
 /* Login form styling */
 .login_form {
     width: 100%;
-    background: var(--eerie_black_dark);
+    background-color: var(--eerie_black_dark);
     border-radius: 15px;
     /* padding: 41px 30px; */
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);

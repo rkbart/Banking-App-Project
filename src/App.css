@@ -1,12 +1,13 @@
 .App {
   display: flex;
   gap: 1rem;
-  background-color: var(--eerie_black_dark);
+  /* background-color: var(--eerie_black_dark); */
+ 
   height: 100%;
-  /* background-image: url("../src/assets/kamoteBg.jpg"); */
-  /* background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center; */
+  width:100vw;
+  padding-left: 5%;
+  position:relative;
+  top:0;
 }
 
 .fade-in {
@@ -54,7 +55,7 @@
   left: 50%;
   transform: translate(-30%, -50%);
   width: 100%; 
-  background-color:var(--eerie_black_dark);
+  /* background-color:var(--eerie_black_dark); */
   font-family: "Roboto", serif;
 }
 

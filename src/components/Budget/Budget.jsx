@@ -4,7 +4,7 @@ import { FaRegEdit } from "react-icons/fa";
 import { MdFastfood } from "react-icons/md";
 import { MdReceiptLong } from "react-icons/md";
 import { SlNotebook } from "react-icons/sl";
-import deleteIcon from '../../assets/close.svg'
+import { MdDeleteForever } from "react-icons/md";
 import { Pie } from 'react-chartjs-2';
 import sweetPotato from '../../assets/sweet-potato.png'
 import { FaMoneyBillTransfer } from "react-icons/fa6";
@@ -99,7 +99,7 @@ function Budget() {
     const handleBudgetInput = (e) => {
         const value = e.target.value;
         const validDecimalPattern = /^\d*\.?\d{0,2}$/;
-        if (validDecimalPattern.test(value)) {
+        if (validDecimalPattern.test(value) && value.replace('.', '').length <= 10) {
             setUpdateBudget(value);
         }
         };
@@ -121,7 +121,15 @@ function Budget() {
     const [errorVisible, setErrorVisible] = useState(false);
     const [validAmount, setValidAmount] = useState(false);
     // Update the input values for expenses
-    const handleExpenseAmount = (e) => setExpenseAmount(e.target.value);
+    const handleExpenseAmount = (e) => {
+        const value = e.target.value;
+        const validDecimalPattern = /^\d*\.?\d{0,2}$/;
+    
+        // Restrict to valid decimal format and no more than 10 digits
+        if (validDecimalPattern.test(value) && value.replace('.', '').length <= 10) {
+            setExpenseAmount(value);
+        }
+    };
     const handleExpenseCategory = (e) => setExpenseCategory(e.target.value);
     const saveDisabled =  expenseAmount <= 0 || !expenseCategory 
     
@@ -222,10 +230,11 @@ function Budget() {
                                     <input
                                         type="number"
                                         min={0}
-                                        step="0.01"
                                         id="budgetInput"
+                                        value={updateBudget}
                                         onChange={handleBudgetInput}
                                         onKeyDown={handleKeyDown}
+                                        maxLength={10}
                                         required
                                     />
                                 </div>
@@ -255,6 +264,7 @@ function Budget() {
                         value = {expenseAmount}
                         onChange= {handleExpenseAmount} 
                         onKeyDown={handleKeyDown}
+                        maxLength={10}
                         required />
                         {validAmount && (
                         <div className="errorMessage">Please enter a valid amount.</div>
@@ -323,8 +333,7 @@ function Budget() {
                                     <p className = "expense-book-list">P{formatBalance(expense.amount)}</p>
                                     
                                     {/* Delete button */}
-                                    <img
-                                        src={deleteIcon}
+                                    <MdDeleteForever
                                         alt="Delete"
                                         className="delete-icon"
                                         onClick={() => handleDeleteExpense(index)} 
