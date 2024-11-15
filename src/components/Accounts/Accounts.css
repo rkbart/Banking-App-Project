@@ -1,13 +1,15 @@
 #accounts-container {
     text-align: center;
-    height: 290px; 
-    width: 45vw; 
+    height: 260px; 
+    /*width: 45vw;  */
     background-color: var(--eerie_black_light);
     border-radius: 15px;
-    padding: 2rem; /* Adjust as necessary */
+    /* padding: 2rem; Adjust as necessary */
     padding-top: 1rem;
+    /* padding-bottom: 4rem; */
     z-index: 1; /* Ensure it stacks above the background */
-    margin-top: 1rem;
+    /* margin-bottom: 1rem; */
+    /* border: 1px solid var(--purple); */
 }
 
 #userlist {
@@ -16,7 +18,7 @@
     margin-top: 1rem;
     overflow-y: auto;
     max-height: 150px;
-    max-width: 45vw; 
+    /* max-width: 45vw;  */
     background-color:  var(--eerie_black_light);
     display: flex;
     flex-wrap: wrap;

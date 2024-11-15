@@ -3,17 +3,15 @@
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-    margin-top: 5px;
-    margin-bottom: 5px;
     background-color: var(--eerie_black_light);
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
+    /* padding-top: 0.5rem;
+    padding-bottom: 0.5rem; */
     border-radius: 15px;
     color: var(--white);
-    /* width: 45vw;  */
     width: 120px;
-    /* max-width: 1200px;  */
-    height: 100%; /* Allow height to adjust to content */
+    height: 98vh; 
+    overflow: auto;
+    /* margin-left: 16px; */
 }
 
 #add-user, #budget, #buy-load, #logout, #dashboard {

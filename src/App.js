@@ -327,7 +327,9 @@ return (
             )}
           </div>   
           {showBudget && (
-            <Budget />
+            <div id='budget-wrapper '>
+              <Budget />
+            </div>
           )} 
         </>
       )}

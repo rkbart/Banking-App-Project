@@ -2,10 +2,10 @@
 #form-container {   
     display: flex;
     justify-content: center;
-    flex-direction: column; /* Ensure vertical stacking */
+    flex-direction: column; 
     align-items: center;
-    height: 93vh; /* Set to auto to allow for dynamic content height */
-    width: 45vw; 
+    height: 98vh; 
+    width: 520px; 
     background-color: var(--eerie_black_light);
     border-radius: 15px;
     padding: 15px; /* Adjust as necessary */

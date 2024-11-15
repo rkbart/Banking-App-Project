@@ -1,14 +1,12 @@
 .App {
   display: flex;
-  flex-direction: row;
+  gap: 1rem;
   background-color: var(--eerie_black_dark);
   height: 100%;
-  padding: 5px;
-  width: 100vw;
-  background-image: url("../src/assets/kamoteBg.jpg");
-  background-repeat: no-repeat;
+  /* background-image: url("../src/assets/kamoteBg.jpg"); */
+  /* background-repeat: no-repeat;
   background-size: contain;
-  background-position: center;
+  background-position: center; */
 }
 
 .fade-in {
@@ -22,28 +20,26 @@
   }
 }
 
-#menu-wrapper {
+/* #menu-wrapper {
   display: flex;
   flex-direction: column; 
   justify-content: flex-start; 
   align-items: flex-start; 
-  margin-left: 1.5rem;
-  margin-top: 0.5rem;
-  /* gap: 0.25rem; */
-  height: 95vh;
-}
+} */
 
 #user-card-wrapper {
   display:flex;
   flex-direction: column;
-  margin-right: 20px;
-  margin-left: 15px;
-  margin-top: 8px;
+  justify-content: flex-start;
+  gap: 1rem;
 }
 
 #history-wrapper {
-  margin-top: 15px;
-  margin-left: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 1rem;
+
 }
 
 /* Full-screen overlay for login */
@@ -60,5 +56,13 @@
   width: 100%; 
   background-color:var(--eerie_black_dark);
   font-family: "Roboto", serif;
+}
+
+#budget-wrapper {
+  display: flex;
+  /* justify-content: center;
+  align-items: center; */
+  width: 100%;
+  gap: 1rem;
 }
 

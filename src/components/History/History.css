@@ -1,13 +1,14 @@
 #history-container {
     background-color: var(--eerie_black_light);
-    width: 45vw;
+    width: 520px;
     height: 350px;
     color: var(--white);
     border-radius: 15px;
     padding: 1rem;
-    overflow-y: hidden;  /* Hide any overflow in the container itself */
-    position: relative;  /* Necessary for positioning child elements */
-    margin-left: 0px;
+    overflow-y: hidden;  
+    position: relative; 
+    /* margin-left: 0px; */
+    /* border: 1px solid var(--purple); */
 }
 #history-container h3 {
     position: sticky;

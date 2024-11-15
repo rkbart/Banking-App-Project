@@ -7,9 +7,8 @@
     background-color: var(--eerie_black_light);
     color: var(--white);
     position: relative;
-    width: 45vw;
-    margin-top: 0.5rem;
-    height: 298px;
+    width: 520px;
+    /* height: 298px; */
     display: flex;
     justify-content:space-evenly;
     flex-direction: column;
