@@ -1,4 +1,5 @@
-<img width="1414" height="2000" alt="Gonzales, Vahnessa as CV" src="https://github.com/user-attachments/assets/ea48c45d-a6ac-4838-9192-357f6b065083" />
+<img width="1414" height="2000" alt="Gonzales, Vahnessa as CV (1)" src="https://github.com/user-attachments/assets/b0157285-6193-45ba-9076-6f20215b0386" />
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
